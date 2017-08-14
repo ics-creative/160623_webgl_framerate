@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="jp">
 <head>
-  <meta charset="UTF-8" />
+  <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1">
   <title>WebGL FPS DEMO</title>
   <script src="libs/Stats.js"></script>
@@ -18,13 +18,21 @@
     }
 
     #renderCanvas,
-    #renderCanvas canvas{
+    #renderCanvas canvas {
       width: 100%;
       height: 100%;
+    }
+
+    h1 {
+      color: white;
+      position: absolute;
+      bottom: 0;
+      left: 1em
     }
   </style>
 </head>
 <body>
-  <div id="renderCanvas"></div>
+<div id="renderCanvas"></div>
+<h1></h1>
 </body>
 </html>

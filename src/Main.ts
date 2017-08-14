@@ -5,6 +5,7 @@ import DatGui from './DatGui';
 import TimerModel from './TimerModel';
 
 import * as THREE from 'three';
+import {detectGpuDriver} from './DetectGpuDriver';
 
 window.addEventListener('DOMContentLoaded', () => {
   new Main();
@@ -84,6 +85,11 @@ class Main {
     window.addEventListener('resize', (event) => {
       this._onResize(event);
     });
+
+    // ドライバーの名前を画面左下に表示
+    const driver = detectGpuDriver();
+
+    document.querySelector('h1').innerHTML = `Your GPU Driver : ${driver}`;
 
     // 毎フレームの更新
     this._tick();
