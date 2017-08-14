@@ -140,8 +140,8 @@ class Main {
    * リサイズ処理
    */
   private _resize() {
-    let width  = this._renderDom.clientWidth;
-    let height = this._renderDom.clientHeight;
+    const width  = this._renderDom.clientWidth;
+    const height = this._renderDom.clientHeight;
     this._renderer.domElement.setAttribute('width', String(width));
     this._renderer.domElement.setAttribute('height', String(height));
     this._renderer.setSize(width, height);
