@@ -5,10 +5,10 @@ import DatGui from './DatGui';
 import TimerModel from './TimerModel';
 
 import * as THREE from 'three';
-import {detectGpuDriver} from './DetectGpuDriver';
+import { detectGpuDriver } from './DetectGpuDriver';
 
-declare class Stats{
-  dom:any;
+declare class Stats {
+  dom: any;
   begin();
   end();
 }
@@ -17,17 +17,20 @@ window.addEventListener('DOMContentLoaded', () => {
   new Main();
 });
 
-document.addEventListener('touchmove', function (e) {
-  if (window.innerHeight >= document.body.scrollHeight) {
-    e.preventDefault();
-  }
-}, false);
+document.addEventListener(
+  'touchmove',
+  function(e) {
+    if (window.innerHeight >= document.body.scrollHeight) {
+      e.preventDefault();
+    }
+  },
+  false
+);
 
 /**
  * デモのメインクラスです。
  */
 class Main {
-
   /** シーンオブジェクトです。 */
   private _scene: THREE.Scene;
   /** カメラオブジェクトです。 */
@@ -55,9 +58,8 @@ class Main {
    * @constructor
    */
   constructor() {
-
     // datGui
-    this._datGui             = DatGui.getInstance();
+    this._datGui = DatGui.getInstance();
     this._onChangePixelRatio = this._onChangePixelRatio.bind(this);
     this._datGui.addEventListener('changePixelRatio', this._onChangePixelRatio);
 
@@ -73,7 +75,7 @@ class Main {
 
     // レンダラー
     this._renderDom = <HTMLDivElement>document.getElementById('renderCanvas');
-    this._renderer  = new THREE.WebGLRenderer({antialias: true});
+    this._renderer = new THREE.WebGLRenderer({ antialias: true });
     this._renderer.setClearColor(0x000000);
     this._renderer.setPixelRatio(this._datGui.pixelRatio);
     this._resize();
@@ -88,7 +90,7 @@ class Main {
     this._scene.add(this._plane);
 
     // リサイズを監視
-    window.addEventListener('resize', (event) => {
+    window.addEventListener('resize', event => {
       this._onResize(event);
     });
 
@@ -146,7 +148,7 @@ class Main {
    * リサイズ処理
    */
   private _resize() {
-    const width  = this._renderDom.clientWidth;
+    const width = this._renderDom.clientWidth;
     const height = this._renderDom.clientHeight;
     this._renderer.domElement.setAttribute('width', String(width));
     this._renderer.domElement.setAttribute('height', String(height));

@@ -16,14 +16,12 @@ export function detectGpuDriver(): string {
 
     if (!ext) {
       renderer = '';
-    }
-    else {
+    } else {
       renderer = gl.getParameter(ext.UNMASKED_RENDERER_WEBGL);
     }
-  }
-  catch (e) {
+  } catch (e) {
     // WebGL未対応の場合
-    gl       = null;
+    gl = null;
     renderer = '';
   }
 

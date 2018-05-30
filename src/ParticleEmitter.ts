@@ -7,7 +7,6 @@ import * as THREE from 'three';
  * パーティクルエミッタークラスです。
  */
 export default class ParticleEmitter extends THREE.Object3D {
-
   /** テクスチャ */
   private _texture: THREE.Texture;
   /** datGui */
@@ -15,17 +14,13 @@ export default class ParticleEmitter extends THREE.Object3D {
   /** 生成するパーティクルの数です。 */
   private _particleNum: number;
   /** パーティクルを発生させる間隔です。 */
-  private _interval: number    = 15;
+  private _interval: number = 15;
   /** 角度 */
-  private _angle: number       = 0;
+  private _angle: number = 0;
   /** 半径 */
-  private _radius: number      = 5;
+  private _radius: number = 5;
   /** カラー配列 */
-  private _colorList: number[] = [
-    0x88ccff,
-    0xffffdd,
-    0x44eeff
-  ];
+  private _colorList: number[] = [0x88ccff, 0xffffdd, 0x44eeff];
 
   /**
    * コンストラクターです。
@@ -36,8 +31,9 @@ export default class ParticleEmitter extends THREE.Object3D {
 
     this._datGui = DatGui.getInstance();
 
-    this._datGui.addEventListener('changeParticleNum',
-        (event: Event) => this._onChangeParticleNum(event));
+    this._datGui.addEventListener('changeParticleNum', (event: Event) =>
+      this._onChangeParticleNum(event)
+    );
 
     this._particleNum = this._datGui.particleNum;
 
@@ -74,13 +70,17 @@ export default class ParticleEmitter extends THREE.Object3D {
     this.children.forEach((particle: Particle, index: number) => {
       if (particle.isAlive) {
         particle.update();
-      }
-      else {
-        particle.init(this._radius, this._angle - (incrementNumber / notAliveNum) * initNum);
+      } else {
+        particle.init(
+          this._radius,
+          this._angle - (incrementNumber / notAliveNum) * initNum
+        );
         initNum++;
       }
 
-      let perLegnth = Math.floor(this._datGui.particleMaxNum / this._particleNum);
+      let perLegnth = Math.floor(
+        this._datGui.particleMaxNum / this._particleNum
+      );
       if (index % perLegnth === 0) {
         particle.visible = true;
       } else {
@@ -102,9 +102,9 @@ export default class ParticleEmitter extends THREE.Object3D {
     if (this.children.length > this._datGui.particleMaxNum) {
       return;
     }
-    const rand       = Math.floor(Math.random() * 3);
-    const color      = this._colorList[rand];
-    const particle   = new Particle(this._texture, color);
+    const rand = Math.floor(Math.random() * 3);
+    const color = this._colorList[rand];
+    const particle = new Particle(this._texture, color);
     particle.visible = false;
     this.add(particle);
   }
@@ -115,5 +115,4 @@ export default class ParticleEmitter extends THREE.Object3D {
   protected _onChangeParticleNum(event: Event): void {
     this._particleNum = this._datGui.particleNum;
   }
-
 }

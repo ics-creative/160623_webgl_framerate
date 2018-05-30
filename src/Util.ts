@@ -2,7 +2,6 @@
  * 便利メソッドクラスです。
  */
 export default class Util {
-
   /**
    * min, maxの間でランダムな数を返します。
    * @param {number} min
