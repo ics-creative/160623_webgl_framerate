@@ -28,10 +28,10 @@ export default class DatGui extends THREE.EventDispatcher {
   public particleMaxNum = 4000;
 
   /** FPSを30にする */
-  public fps30: Boolean = false;
+  public fps30:boolean = false;
 
   /** timeRatioの有無 */
-  public timeRatioMode: Boolean = false;
+  public timeRatioMode: boolean = false;
 
   /**
    * コンストラクター

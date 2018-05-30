@@ -7,6 +7,12 @@ import TimerModel from './TimerModel';
 import * as THREE from 'three';
 import {detectGpuDriver} from './DetectGpuDriver';
 
+declare class Stats{
+  dom:any;
+  begin();
+  end();
+}
+
 window.addEventListener('DOMContentLoaded', () => {
   new Main();
 });
