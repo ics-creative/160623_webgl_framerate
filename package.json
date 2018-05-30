@@ -2,20 +2,20 @@
   "scripts": {
     "start": "npm run watch & npm run lite",
     "lite": "lite-server",
-    "build": "webpack",
-    "watch": "webpack -w"
+    "build": "webpack --mode production",
+    "watch": "webpack -w --mode development"
   },
   "devDependencies": {
-    "awesome-typescript-loader": "^3.2.2",
     "lite-server": "^2.2.0",
-    "source-map-loader": "^0.2.1",
+    "ts-loader": "^4.3.0",
     "typescript": "^2.4.2",
-    "webpack": "^3.5.4"
+    "webpack": "^4.10.2",
+    "webpack-cli": "^2.1.4"
   },
   "dependencies": {
     "@types/dat-gui": "^0.6.3",
-    "@types/three": "^0.84.19",
+    "@types/three": "^0.92.3",
     "dat-gui": "^0.5.0",
-    "three": "^0.86.0"
+    "three": "^0.92.0"
   }
 }

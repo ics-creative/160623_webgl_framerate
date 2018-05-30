@@ -1,5 +1,3 @@
-const webpack = require('webpack');
-
 module.exports = {
   // メインとなるJavaScriptファイル（エントリーポイント）
   entry: './src/main.ts',
@@ -16,30 +14,17 @@ module.exports = {
         // 拡張子 .ts の場合
         test: /\.ts$/,
         // TypeScript をコンパイルする
-        use: 'awesome-typescript-loader'
-      },
-      // ソースマップファイルの処理
-      {
-        enforce: 'pre',
-        test: /\.js$/,
-        loader: 'source-map-loader'
+        use: 'ts-loader'
       }
     ]
   },
   // import 文で .ts ファイルを解決するため
   resolve: {
     extensions: [
-      '.ts', '.js', '.json'
+      '.ts', '.js'
     ],
   },
   // ソースマップを有効に
   devtool: 'source-map',
 
-  plugins: [
-    // JSファイルのminifyを実行する
-    new webpack.optimize.UglifyJsPlugin({
-      // minify時でもソースマップを利用する
-      sourceMap: true
-    })
-  ]
 };
