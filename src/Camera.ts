@@ -1,10 +1,10 @@
+import { PerspectiveCamera, Vector3 } from 'three';
 import TimerModel from './TimerModel';
-import * as THREE from 'three';
 
 /**
  * カメラのクラスです。
  */
-export default class Camera extends THREE.PerspectiveCamera {
+export default class Camera extends PerspectiveCamera {
   /** アニメーションに用いる角度の値です。 */
   private _angle: number = 0;
   /** アニメーションの円軌道の半径です。 */
@@ -34,6 +34,6 @@ export default class Camera extends THREE.PerspectiveCamera {
     let lad = (this._angle * Math.PI) / 180;
     this.position.x = this._radius * Math.sin(lad);
     this.position.z = this._radius * Math.cos(lad);
-    this.lookAt(new THREE.Vector3(0, 1.5, 0));
+    this.lookAt(new Vector3(0, 1.5, 0));
   }
 }

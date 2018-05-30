@@ -1,17 +1,23 @@
+import {
+  AdditiveBlending,
+  Sprite,
+  SpriteMaterial,
+  Texture,
+  Vector3
+} from 'three';
 import Util from './Util';
 import TimerModel from './TimerModel';
-import * as THREE from 'three';
 
 /**
  * パーティクルのクラスです。
  */
-export default class Particle extends THREE.Sprite {
+export default class Particle extends Sprite {
   /** フレーム毎にカウントされる値です。 */
   private _counter: number = 0;
   /** パーティクルの速度です。 */
-  private _velocity: THREE.Vector3;
+  private _velocity: Vector3;
   /** 開始点 */
-  private _startPosition: THREE.Vector3;
+  private _startPosition: Vector3;
 
   /** ライフポイント */
   private _lifePoint: number;
@@ -26,13 +32,13 @@ export default class Particle extends THREE.Sprite {
    * コンストラクターです。
    * @constructor
    */
-  constructor(texture: THREE.Texture, color: number = 0x88ccff) {
+  constructor(texture: Texture, color: number = 0x88ccff) {
     super(
-      new THREE.SpriteMaterial({
+      new SpriteMaterial({
         color: color,
         map: texture,
         transparent: true,
-        blending: THREE.AdditiveBlending
+        blending: AdditiveBlending
       })
     );
   }
@@ -49,7 +55,7 @@ export default class Particle extends THREE.Sprite {
 
     this._maxScale = Math.random() * 1.5 + 0.5;
     this.scale.set(0, 0, 0);
-    this._velocity = new THREE.Vector3(
+    this._velocity = new Vector3(
       Util.random(-0.07, 0.07),
       Util.random(0.03, 0.08),
       Util.random(-0.07, 0.07)

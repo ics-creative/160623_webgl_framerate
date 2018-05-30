@@ -1,10 +1,10 @@
 import * as dat from 'dat-gui';
-import * as THREE from 'three';
+import { EventDispatcher } from 'three';
 
 /**
  * datGuiクラスです。
  */
-export default class DatGui extends THREE.EventDispatcher {
+export default class DatGui extends EventDispatcher {
   private static _instance: DatGui;
 
   /**

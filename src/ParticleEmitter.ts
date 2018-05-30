@@ -1,14 +1,14 @@
+import { Object3D, Texture, TextureLoader } from 'three';
 import Particle from './Particle';
 import DatGui from './DatGui';
 import TimerModel from './TimerModel';
-import * as THREE from 'three';
 
 /**
  * パーティクルエミッタークラスです。
  */
-export default class ParticleEmitter extends THREE.Object3D {
+export default class ParticleEmitter extends Object3D {
   /** テクスチャ */
-  private _texture: THREE.Texture;
+  private _texture: Texture;
   /** datGui */
   private _datGui: DatGui;
   /** 生成するパーティクルの数です。 */
@@ -38,8 +38,8 @@ export default class ParticleEmitter extends THREE.Object3D {
     this._particleNum = this._datGui.particleNum;
 
     //テクスチャ読み込み
-    const loader = new THREE.TextureLoader();
-    loader.load('./assets/texture/particle.png', (texture: THREE.Texture) => {
+    const loader = new TextureLoader();
+    loader.load('./assets/texture/particle.png', (texture: Texture) => {
       this._texture = texture;
     });
   }

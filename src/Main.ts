@@ -1,10 +1,10 @@
+import { Scene, WebGLRenderer } from 'three';
 import Camera from './Camera';
 import Plane from './Plane';
 import ParticleEmitter from './ParticleEmitter';
 import DatGui from './DatGui';
 import TimerModel from './TimerModel';
 
-import * as THREE from 'three';
 import { detectGpuDriver } from './DetectGpuDriver';
 
 declare class Stats {
@@ -32,13 +32,13 @@ document.addEventListener(
  */
 class Main {
   /** シーンオブジェクトです。 */
-  private _scene: THREE.Scene;
+  private _scene: Scene;
   /** カメラオブジェクトです。 */
   private _camera: Camera;
   /** 地面オブジェクトです。 */
   private _plane: Plane;
   /** レンダラーオブジェクトです。 */
-  private _renderer: THREE.WebGLRenderer;
+  private _renderer: WebGLRenderer;
   /** FPS表示 */
   private _stats: Stats;
   /** canvasを追加するDOM */
@@ -68,14 +68,14 @@ class Main {
     document.body.appendChild(this._stats.dom);
 
     // シーン
-    this._scene = new THREE.Scene();
+    this._scene = new Scene();
 
     // カメラ
     this._camera = new Camera();
 
     // レンダラー
     this._renderDom = <HTMLDivElement>document.getElementById('renderCanvas');
-    this._renderer = new THREE.WebGLRenderer({ antialias: true });
+    this._renderer = new WebGLRenderer({ antialias: true });
     this._renderer.setClearColor(0x000000);
     this._renderer.setPixelRatio(this._datGui.pixelRatio);
     this._resize();
