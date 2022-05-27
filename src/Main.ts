@@ -59,8 +59,7 @@ class Main {
    */
   constructor() {
     // datGui
-    // this._datGui = DatGui.getInstance();
-    this._datGui = new DatGui();
+    this._datGui = DatGui.getInstance();
     this._onChangePixelRatio = this._onChangePixelRatio.bind(this);
     this._datGui.addEventListener('changePixelRatio', this._onChangePixelRatio);
 
