@@ -2524,10 +2524,10 @@ class Particle extends three__WEBPACK_IMPORTED_MODULE_2__.Sprite {
      * ポジションを戻します。
      */
     init(radius, angle) {
-        let rad = (angle * Math.PI) / 180;
-        let x = radius * Math.sin(rad);
-        let y = 4 * Math.sin(rad * 0.3);
-        let z = radius * Math.cos(rad);
+        const rad = (angle * Math.PI) / 180;
+        const x = radius * Math.sin(rad);
+        const y = 4 * Math.sin(rad * 0.3);
+        const z = radius * Math.cos(rad);
         this.position.set(x, y, z);
         this._maxScale = Math.random() * 1.5 + 0.5;
         this.scale.set(0, 0, 0);
