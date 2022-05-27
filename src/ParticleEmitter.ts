@@ -30,10 +30,8 @@ export default class ParticleEmitter extends Object3D {
     super();
 
     this._lilGui = LilGui.getInstance();
-    
-    this._lilGui.addEventListener('changeParticleNum', (event:Event) =>
-      this._onChangeParticleNum(event)
-    );
+
+    this._lilGui.addEventListener('changeParticleNum', this._onChangeParticleNum);
 
     this._particleNum = this._lilGui.particleNum;
 
@@ -112,7 +110,7 @@ export default class ParticleEmitter extends Object3D {
   /**
    * パーティクル数変更時のハンドラーです。
    */
-  protected _onChangeParticleNum(event: Event): void {
+  protected _onChangeParticleNum(): void {
     this._particleNum = this._lilGui.particleNum;
   }
 }

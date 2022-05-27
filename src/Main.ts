@@ -160,7 +160,7 @@ class Main {
   /**
    * PixelRatio変更時のハンドラーです。
    */
-  private _onChangePixelRatio(event: Event) {
+  private _onChangePixelRatio() {
     this._renderer.setPixelRatio(this._lilGui.pixelRatio);
   }
 }

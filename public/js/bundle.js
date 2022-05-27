@@ -2601,7 +2601,7 @@ class ParticleEmitter extends three__WEBPACK_IMPORTED_MODULE_3__.Object3D {
         /** カラー配列 */
         this._colorList = [0x88ccff, 0xffffdd, 0x44eeff];
         this._lilGui = _LilGui__WEBPACK_IMPORTED_MODULE_1__["default"].getInstance();
-        this._lilGui.addEventListener('changeParticleNum', (event) => this._onChangeParticleNum(event));
+        this._lilGui.addEventListener('changeParticleNum', this._onChangeParticleNum);
         this._particleNum = this._lilGui.particleNum;
         //テクスチャ読み込み
         const loader = new three__WEBPACK_IMPORTED_MODULE_3__.TextureLoader();
@@ -2667,7 +2667,7 @@ class ParticleEmitter extends three__WEBPACK_IMPORTED_MODULE_3__.Object3D {
     /**
      * パーティクル数変更時のハンドラーです。
      */
-    _onChangeParticleNum(event) {
+    _onChangeParticleNum() {
         this._particleNum = this._lilGui.particleNum;
     }
 }
@@ -54122,7 +54122,8 @@ class Main {
     /**
      * PixelRatio変更時のハンドラーです。
      */
-    _onChangePixelRatio(event) {
+    _onChangePixelRatio() {
+        // private _onChangePixelRatio(event: Event) {
         this._renderer.setPixelRatio(this._lilGui.pixelRatio);
     }
 }
