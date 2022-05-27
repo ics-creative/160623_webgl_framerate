@@ -32,11 +32,11 @@ document.addEventListener(
  */
 class Main {
   /** シーンオブジェクトです。 */
-  private _scene: Scene;
+  private readonly _scene: Scene;
   /** カメラオブジェクトです。 */
-  private _camera: Camera;
+  private readonly _camera: Camera;
   /** 地面オブジェクトです。 */
-  private _plane: Plane;
+  private readonly _plane: Plane;
   /** レンダラーオブジェクトです。 */
   private _renderer: WebGLRenderer;
   /** FPS表示 */
@@ -44,7 +44,7 @@ class Main {
   /** canvasを追加するDOM */
   private _renderDom: HTMLDivElement;
   /** パーティクルエミッター */
-  private _particleEmitter: ParticleEmitter;
+  private readonly _particleEmitter: ParticleEmitter;
   /** lilGui */
   private _lilGui: LilGui;
 
