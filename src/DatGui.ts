@@ -1,5 +1,6 @@
 import * as dat from 'dat-gui';
 import { EventDispatcher } from 'three';
+import GUI from "lil-gui";
 
 /**
  * datGuiクラスです。
@@ -11,11 +12,12 @@ export default class DatGui extends EventDispatcher {
    * インスタンスを取得します。
    */
   public static getInstance(): DatGui {
-    return DatGui._instance || new DatGui();
+    return DatGui._instance || new GUI();
   }
 
   /** gui */
-  private _gui: dat.GUI;
+  private _gui: GUI;
+  // private _gui: dat.GUI;
 
   /** pixelRatio */
   public pixelRatio: number = window.devicePixelRatio;
@@ -39,7 +41,8 @@ export default class DatGui extends EventDispatcher {
   constructor() {
     super();
 
-    this._gui = new dat.GUI();
+    this._gui = new GUI();
+    // this._gui = new dat.GUI();
 
     // pixelRatio
     const pixelRatioRow = this._gui.add(this, 'pixelRatio', 0.5, 3.0).step(0.5);

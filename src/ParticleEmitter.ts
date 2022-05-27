@@ -29,9 +29,11 @@ export default class ParticleEmitter extends Object3D {
   constructor() {
     super();
 
+    //どっち
+    // this._datGui = new DatGui();
     this._datGui = DatGui.getInstance();
 
-    this._datGui.addEventListener('changeParticleNum', (event: Event) =>
+    this._datGui.addEventListener('changeParticleNum', (event:Event) =>
       this._onChangeParticleNum(event)
     );
 
@@ -112,7 +114,8 @@ export default class ParticleEmitter extends Object3D {
   /**
    * パーティクル数変更時のハンドラーです。
    */
-  protected _onChangeParticleNum(event: Event): void {
+  protected _onChangeParticleNum(event): void {
+  // protected _onChangeParticleNum(event: Event): void {
     this._particleNum = this._datGui.particleNum;
   }
 }
