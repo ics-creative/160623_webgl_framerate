@@ -78,7 +78,7 @@ export default class ParticleEmitter extends Object3D {
         initNum++;
       }
 
-      let perLength = Math.floor(
+      const perLength = Math.floor(
         this._lilGui.particleMaxNum / this._particleNum
       );
       if (index % perLength === 0) {

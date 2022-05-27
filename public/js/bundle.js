@@ -2637,7 +2637,7 @@ class ParticleEmitter extends three__WEBPACK_IMPORTED_MODULE_3__.Object3D {
                 particle.init(this._radius, this._angle - (incrementNumber / notAliveNum) * initNum);
                 initNum++;
             }
-            let perLength = Math.floor(this._lilGui.particleMaxNum / this._particleNum);
+            const perLength = Math.floor(this._lilGui.particleMaxNum / this._particleNum);
             if (index % perLength === 0) {
                 particle.visible = true;
             }
