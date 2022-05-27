@@ -31,7 +31,9 @@ export default class ParticleEmitter extends Object3D {
 
     this._lilGui = LilGui.getInstance();
 
-    this._lilGui.addEventListener('changeParticleNum', this._onChangeParticleNum);
+    this._lilGui.addEventListener('changeParticleNum', () =>
+      this._onChangeParticleNum()
+    );
 
     this._particleNum = this._lilGui.particleNum;
 
