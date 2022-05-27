@@ -2,7 +2,7 @@ import { Scene, WebGLRenderer } from 'three';
 import Camera from './Camera';
 import Plane from './Plane';
 import ParticleEmitter from './ParticleEmitter';
-import DatGui from './DatGui';
+import LilGui from './LilGui';
 import TimerModel from './TimerModel';
 
 import { detectGpuDriver } from './DetectGpuDriver';
@@ -46,7 +46,7 @@ class Main {
   /** パーティクルエミッター */
   private _particleEmitter: ParticleEmitter;
   /** datGui */
-  private _datGui: DatGui;
+  private _datGui: LilGui;
 
   /** フレームカウント */
   private _frame: number = 0;
@@ -59,7 +59,7 @@ class Main {
    */
   constructor() {
     // datGui
-    this._datGui = DatGui.getInstance();
+    this._datGui = LilGui.getInstance();
     this._onChangePixelRatio = this._onChangePixelRatio.bind(this);
     this._datGui.addEventListener('changePixelRatio', this._onChangePixelRatio);
 

@@ -2345,102 +2345,6 @@ class Camera extends three__WEBPACK_IMPORTED_MODULE_1__.PerspectiveCamera {
 
 /***/ }),
 
-/***/ "./src/DatGui.ts":
-/*!***********************!*\
-  !*** ./src/DatGui.ts ***!
-  \***********************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (/* binding */ DatGui)
-/* harmony export */ });
-/* harmony import */ var three__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! three */ "./node_modules/three/build/three.module.js");
-/* harmony import */ var lil_gui__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! lil-gui */ "./node_modules/lil-gui/dist/lil-gui.esm.js");
-
-
-/**
- * datGuiクラスです。
- */
-class DatGui extends three__WEBPACK_IMPORTED_MODULE_1__.EventDispatcher {
-    /**
-     * コンストラクター
-     * @constructor
-     */
-    constructor() {
-        super();
-        /** pixelRatio */
-        this.pixelRatio = window.devicePixelRatio;
-        /** パーティクルの数 */
-        this.particleNum = 500;
-        /** パーティクルの最大数 */
-        this.particleMaxNum = 4000;
-        /** FPSを30にする */
-        this.fps30 = false;
-        /** timeRatioの有無 */
-        this.timeRatioMode = false;
-        this._gui = new lil_gui__WEBPACK_IMPORTED_MODULE_0__["default"]();
-        // pixelRatio
-        const pixelRatioRow = this._gui.add(this, 'pixelRatio', 0.5, 3.0).step(0.5);
-        pixelRatioRow.onChange(() => {
-            this._onChangePixelRatio();
-        });
-        // パーティクルの数
-        const particleNumRow = this._gui.add(this, 'particleNum', 100, this.particleMaxNum);
-        particleNumRow.onChange(() => {
-            this._onChangeParticleNum();
-        });
-        // FPSを30に
-        const fps30Row = this._gui.add(this, 'fps30');
-        fps30Row.onChange(() => {
-            this._onChangeFps30();
-        });
-        // FPSを30に
-        const timeRatioRow = this._gui.add(this, 'timeRatioMode');
-        timeRatioRow.onChange(() => {
-            this._onChangeTimeRatioMode();
-        });
-        DatGui._instance = this;
-    }
-    /**
-     * インスタンスを取得します。
-     */
-    static getInstance() {
-        return DatGui._instance || new DatGui();
-    }
-    /**
-     * pixelRatioが変更された時のハンドラーです。
-     */
-    _onChangePixelRatio() {
-        // イベントを発火
-        this.dispatchEvent({ type: 'changePixelRatio' });
-    }
-    /**
-     * パーティクル数が変更された時のハンドラーです。
-     */
-    _onChangeParticleNum() {
-        // イベントを発火
-        this.dispatchEvent({ type: 'changeParticleNum' });
-    }
-    /**
-     * FPS30モードの切替え時のハンドラーです。
-     */
-    _onChangeFps30() {
-        // イベントを発火
-        this.dispatchEvent({ type: 'changeFps30' });
-    }
-    /**
-     * FPS30モードの切替え時のハンドラーです。
-     */
-    _onChangeTimeRatioMode() {
-        // イベントを発火
-        this.dispatchEvent({ type: 'changeTimeRatioMode' });
-    }
-}
-
-
-/***/ }),
-
 /***/ "./src/DetectGpuDriver.ts":
 /*!********************************!*\
   !*** ./src/DetectGpuDriver.ts ***!
@@ -2479,6 +2383,102 @@ function detectGpuDriver() {
     }
     // ドライバの種類を出力
     return renderer;
+}
+
+
+/***/ }),
+
+/***/ "./src/LilGui.ts":
+/*!***********************!*\
+  !*** ./src/LilGui.ts ***!
+  \***********************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (/* binding */ LilGui)
+/* harmony export */ });
+/* harmony import */ var three__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! three */ "./node_modules/three/build/three.module.js");
+/* harmony import */ var lil_gui__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! lil-gui */ "./node_modules/lil-gui/dist/lil-gui.esm.js");
+
+
+/**
+ * datGuiクラスです。
+ */
+class LilGui extends three__WEBPACK_IMPORTED_MODULE_1__.EventDispatcher {
+    /**
+     * コンストラクター
+     * @constructor
+     */
+    constructor() {
+        super();
+        /** pixelRatio */
+        this.pixelRatio = window.devicePixelRatio;
+        /** パーティクルの数 */
+        this.particleNum = 500;
+        /** パーティクルの最大数 */
+        this.particleMaxNum = 4000;
+        /** FPSを30にする */
+        this.fps30 = false;
+        /** timeRatioの有無 */
+        this.timeRatioMode = false;
+        this._gui = new lil_gui__WEBPACK_IMPORTED_MODULE_0__["default"]();
+        // pixelRatio
+        const pixelRatioRow = this._gui.add(this, 'pixelRatio', 0.5, 3.0).step(0.5);
+        pixelRatioRow.onChange(() => {
+            this._onChangePixelRatio();
+        });
+        // パーティクルの数
+        const particleNumRow = this._gui.add(this, 'particleNum', 100, this.particleMaxNum);
+        particleNumRow.onChange(() => {
+            this._onChangeParticleNum();
+        });
+        // FPSを30に
+        const fps30Row = this._gui.add(this, 'fps30');
+        fps30Row.onChange(() => {
+            this._onChangeFps30();
+        });
+        // FPSを30に
+        const timeRatioRow = this._gui.add(this, 'timeRatioMode');
+        timeRatioRow.onChange(() => {
+            this._onChangeTimeRatioMode();
+        });
+        LilGui._instance = this;
+    }
+    /**
+     * インスタンスを取得します。
+     */
+    static getInstance() {
+        return LilGui._instance || new LilGui();
+    }
+    /**
+     * pixelRatioが変更された時のハンドラーです。
+     */
+    _onChangePixelRatio() {
+        // イベントを発火
+        this.dispatchEvent({ type: 'changePixelRatio' });
+    }
+    /**
+     * パーティクル数が変更された時のハンドラーです。
+     */
+    _onChangeParticleNum() {
+        // イベントを発火
+        this.dispatchEvent({ type: 'changeParticleNum' });
+    }
+    /**
+     * FPS30モードの切替え時のハンドラーです。
+     */
+    _onChangeFps30() {
+        // イベントを発火
+        this.dispatchEvent({ type: 'changeFps30' });
+    }
+    /**
+     * FPS30モードの切替え時のハンドラーです。
+     */
+    _onChangeTimeRatioMode() {
+        // イベントを発火
+        this.dispatchEvent({ type: 'changeTimeRatioMode' });
+    }
 }
 
 
@@ -2576,7 +2576,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var three__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! three */ "./node_modules/three/build/three.module.js");
 /* harmony import */ var _Particle__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Particle */ "./src/Particle.ts");
-/* harmony import */ var _DatGui__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./DatGui */ "./src/DatGui.ts");
+/* harmony import */ var _LilGui__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./LilGui */ "./src/LilGui.ts");
 /* harmony import */ var _TimerModel__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./TimerModel */ "./src/TimerModel.ts");
 
 
@@ -2600,7 +2600,7 @@ class ParticleEmitter extends three__WEBPACK_IMPORTED_MODULE_3__.Object3D {
         this._radius = 5;
         /** カラー配列 */
         this._colorList = [0x88ccff, 0xffffdd, 0x44eeff];
-        this._datGui = _DatGui__WEBPACK_IMPORTED_MODULE_1__["default"].getInstance();
+        this._datGui = _LilGui__WEBPACK_IMPORTED_MODULE_1__["default"].getInstance();
         this._datGui.addEventListener('changeParticleNum', (event) => this._onChangeParticleNum(event));
         this._particleNum = this._datGui.particleNum;
         //テクスチャ読み込み
@@ -2720,7 +2720,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (/* binding */ TimerModel)
 /* harmony export */ });
-/* harmony import */ var _DatGui__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./DatGui */ "./src/DatGui.ts");
+/* harmony import */ var _LilGui__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./LilGui */ "./src/LilGui.ts");
 
 /**
  * タイマー周りのモデルクラスです。
@@ -2746,7 +2746,7 @@ class TimerModel {
      * 時間経過比率をアップデート
      */
     updateTimeRatio() {
-        if (!_DatGui__WEBPACK_IMPORTED_MODULE_0__["default"].getInstance().timeRatioMode) {
+        if (!_LilGui__WEBPACK_IMPORTED_MODULE_0__["default"].getInstance().timeRatioMode) {
             this._timeRatio = 1;
             // 現在時間をセット
             this._time = new Date().getTime();
@@ -54012,7 +54012,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _Camera__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Camera */ "./src/Camera.ts");
 /* harmony import */ var _Plane__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Plane */ "./src/Plane.ts");
 /* harmony import */ var _ParticleEmitter__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./ParticleEmitter */ "./src/ParticleEmitter.ts");
-/* harmony import */ var _DatGui__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./DatGui */ "./src/DatGui.ts");
+/* harmony import */ var _LilGui__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./LilGui */ "./src/LilGui.ts");
 /* harmony import */ var _TimerModel__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./TimerModel */ "./src/TimerModel.ts");
 /* harmony import */ var _DetectGpuDriver__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./DetectGpuDriver */ "./src/DetectGpuDriver.ts");
 
@@ -54042,7 +54042,7 @@ class Main {
         /** フレームカウント */
         this._frame = 0;
         // datGui
-        this._datGui = _DatGui__WEBPACK_IMPORTED_MODULE_3__["default"].getInstance();
+        this._datGui = _LilGui__WEBPACK_IMPORTED_MODULE_3__["default"].getInstance();
         this._onChangePixelRatio = this._onChangePixelRatio.bind(this);
         this._datGui.addEventListener('changePixelRatio', this._onChangePixelRatio);
         // 左上に表示するようCSSを記述してbody直下に表示

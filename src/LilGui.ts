@@ -4,14 +4,14 @@ import GUI from "lil-gui";
 /**
  * datGuiクラスです。
  */
-export default class DatGui extends EventDispatcher {
-  private static _instance: DatGui;
+export default class LilGui extends EventDispatcher {
+  private static _instance: LilGui;
 
   /**
    * インスタンスを取得します。
    */
-  public static getInstance(): DatGui {
-    return DatGui._instance || new DatGui();
+  public static getInstance(): LilGui {
+    return LilGui._instance || new LilGui();
   }
 
   /** gui */
@@ -70,7 +70,7 @@ export default class DatGui extends EventDispatcher {
       this._onChangeTimeRatioMode();
     });
 
-    DatGui._instance = this;
+    LilGui._instance = this;
   }
 
   /**

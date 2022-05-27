@@ -1,6 +1,6 @@
 import { Object3D, Texture, TextureLoader } from 'three';
 import Particle from './Particle';
-import DatGui from './DatGui';
+import LilGui from './LilGui';
 import TimerModel from './TimerModel';
 
 /**
@@ -10,7 +10,7 @@ export default class ParticleEmitter extends Object3D {
   /** テクスチャ */
   private _texture: Texture;
   /** datGui */
-  private _datGui: DatGui;
+  private _datGui: LilGui;
   /** 生成するパーティクルの数です。 */
   private _particleNum: number;
   /** パーティクルを発生させる間隔です。 */
@@ -28,7 +28,7 @@ export default class ParticleEmitter extends Object3D {
    */
   constructor() {
     super();
-    this._datGui = DatGui.getInstance();
+    this._datGui = LilGui.getInstance();
     this._datGui.addEventListener('changeParticleNum', (event:Event) =>
       this._onChangeParticleNum(event)
     );

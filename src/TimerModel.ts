@@ -1,4 +1,4 @@
-import DatGui from './DatGui';
+import LilGui from './LilGui';
 
 /**
  * タイマー周りのモデルクラスです。
@@ -31,7 +31,7 @@ export default class TimerModel {
    * 時間経過比率をアップデート
    */
   public updateTimeRatio(): void {
-    if (!DatGui.getInstance().timeRatioMode) {
+    if (!LilGui.getInstance().timeRatioMode) {
       this._timeRatio = 1;
       // 現在時間をセット
       this._time = new Date().getTime();
