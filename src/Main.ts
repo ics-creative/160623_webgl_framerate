@@ -45,8 +45,8 @@ class Main {
   private _renderDom: HTMLDivElement;
   /** パーティクルエミッター */
   private _particleEmitter: ParticleEmitter;
-  /** datGui */
-  private _datGui: LilGui;
+  /** lilGui */
+  private _lilGui: LilGui;
 
   /** フレームカウント */
   private _frame: number = 0;
@@ -58,10 +58,10 @@ class Main {
    * @constructor
    */
   constructor() {
-    // datGui
-    this._datGui = LilGui.getInstance();
+    // lilGui
+    this._lilGui = LilGui.getInstance();
     this._onChangePixelRatio = this._onChangePixelRatio.bind(this);
-    this._datGui.addEventListener('changePixelRatio', this._onChangePixelRatio);
+    this._lilGui.addEventListener('changePixelRatio', this._onChangePixelRatio);
 
     // 左上に表示するようCSSを記述してbody直下に表示
     this._stats = new Stats();
@@ -77,7 +77,7 @@ class Main {
     this._renderDom = <HTMLDivElement>document.getElementById('renderCanvas');
     this._renderer = new WebGLRenderer({ antialias: true });
     this._renderer.setClearColor(0x000000);
-    this._renderer.setPixelRatio(this._datGui.pixelRatio);
+    this._renderer.setPixelRatio(this._lilGui.pixelRatio);
     this._resize();
     this._renderDom.appendChild(<HTMLElement>this._renderer.domElement);
 
@@ -125,7 +125,7 @@ class Main {
     TimerModel.getInstance().updateTimeRatio();
 
     // FPSを30に
-    if (this._datGui.fps30 && this._frame % 2) {
+    if (this._lilGui.fps30 && this._frame % 2) {
       return;
     }
 
@@ -161,6 +161,6 @@ class Main {
    * PixelRatio変更時のハンドラーです。
    */
   private _onChangePixelRatio(event: Event) {
-    this._renderer.setPixelRatio(this._datGui.pixelRatio);
+    this._renderer.setPixelRatio(this._lilGui.pixelRatio);
   }
 }

@@ -2600,9 +2600,9 @@ class ParticleEmitter extends three__WEBPACK_IMPORTED_MODULE_3__.Object3D {
         this._radius = 5;
         /** カラー配列 */
         this._colorList = [0x88ccff, 0xffffdd, 0x44eeff];
-        this._datGui = _LilGui__WEBPACK_IMPORTED_MODULE_1__["default"].getInstance();
-        this._datGui.addEventListener('changeParticleNum', (event) => this._onChangeParticleNum(event));
-        this._particleNum = this._datGui.particleNum;
+        this._lilGui = _LilGui__WEBPACK_IMPORTED_MODULE_1__["default"].getInstance();
+        this._lilGui.addEventListener('changeParticleNum', (event) => this._onChangeParticleNum(event));
+        this._particleNum = this._lilGui.particleNum;
         //テクスチャ読み込み
         const loader = new three__WEBPACK_IMPORTED_MODULE_3__.TextureLoader();
         loader.load('./assets/texture/particle.png', (texture) => {
@@ -2637,15 +2637,15 @@ class ParticleEmitter extends three__WEBPACK_IMPORTED_MODULE_3__.Object3D {
                 particle.init(this._radius, this._angle - (incrementNumber / notAliveNum) * initNum);
                 initNum++;
             }
-            let perLegnth = Math.floor(this._datGui.particleMaxNum / this._particleNum);
-            if (index % perLegnth === 0) {
+            let perLength = Math.floor(this._lilGui.particleMaxNum / this._particleNum);
+            if (index % perLength === 0) {
                 particle.visible = true;
             }
             else {
                 particle.visible = false;
             }
         });
-        if (this.children.length < this._datGui.particleMaxNum) {
+        if (this.children.length < this._lilGui.particleMaxNum) {
             for (let i = 0; i < 10; i++) {
                 this._addParticle();
             }
@@ -2655,7 +2655,7 @@ class ParticleEmitter extends three__WEBPACK_IMPORTED_MODULE_3__.Object3D {
      * パーティクルを追加します。
      */
     _addParticle() {
-        if (this.children.length > this._datGui.particleMaxNum) {
+        if (this.children.length > this._lilGui.particleMaxNum) {
             return;
         }
         const rand = Math.floor(Math.random() * 3);
@@ -2667,9 +2667,8 @@ class ParticleEmitter extends three__WEBPACK_IMPORTED_MODULE_3__.Object3D {
     /**
      * パーティクル数変更時のハンドラーです。
      */
-    // protected _onChangeParticleNum(event): void {
     _onChangeParticleNum(event) {
-        this._particleNum = this._datGui.particleNum;
+        this._particleNum = this._lilGui.particleNum;
     }
 }
 
@@ -54041,10 +54040,10 @@ class Main {
     constructor() {
         /** フレームカウント */
         this._frame = 0;
-        // datGui
-        this._datGui = _LilGui__WEBPACK_IMPORTED_MODULE_3__["default"].getInstance();
+        // lilGui
+        this._lilGui = _LilGui__WEBPACK_IMPORTED_MODULE_3__["default"].getInstance();
         this._onChangePixelRatio = this._onChangePixelRatio.bind(this);
-        this._datGui.addEventListener('changePixelRatio', this._onChangePixelRatio);
+        this._lilGui.addEventListener('changePixelRatio', this._onChangePixelRatio);
         // 左上に表示するようCSSを記述してbody直下に表示
         this._stats = new Stats();
         document.body.appendChild(this._stats.dom);
@@ -54056,7 +54055,7 @@ class Main {
         this._renderDom = document.getElementById('renderCanvas');
         this._renderer = new three__WEBPACK_IMPORTED_MODULE_6__.WebGLRenderer({ antialias: true });
         this._renderer.setClearColor(0x000000);
-        this._renderer.setPixelRatio(this._datGui.pixelRatio);
+        this._renderer.setPixelRatio(this._lilGui.pixelRatio);
         this._resize();
         this._renderDom.appendChild(this._renderer.domElement);
         // パーティクルエミッター
@@ -54092,7 +54091,7 @@ class Main {
         // 時間比率を更新
         _TimerModel__WEBPACK_IMPORTED_MODULE_4__["default"].getInstance().updateTimeRatio();
         // FPSを30に
-        if (this._datGui.fps30 && this._frame % 2) {
+        if (this._lilGui.fps30 && this._frame % 2) {
             return;
         }
         // Statsの計測を開始
@@ -54124,7 +54123,7 @@ class Main {
      * PixelRatio変更時のハンドラーです。
      */
     _onChangePixelRatio(event) {
-        this._renderer.setPixelRatio(this._datGui.pixelRatio);
+        this._renderer.setPixelRatio(this._lilGui.pixelRatio);
     }
 }
 
