@@ -19,7 +19,7 @@ window.addEventListener('DOMContentLoaded', () => {
 
 document.addEventListener(
   'touchmove',
-  function(e) {
+  function (e) {
     if (window.innerHeight >= document.body.scrollHeight) {
       e.preventDefault();
     }
@@ -90,7 +90,7 @@ class Main {
     this._scene.add(this._plane);
 
     // リサイズを監視
-    window.addEventListener('resize', event => {
+    window.addEventListener('resize', (event) => {
       this._onResize(event);
     });
 

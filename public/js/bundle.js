@@ -2513,7 +2513,7 @@ class Particle extends three__WEBPACK_IMPORTED_MODULE_2__.Sprite {
             color: color,
             map: texture,
             transparent: true,
-            blending: three__WEBPACK_IMPORTED_MODULE_2__.AdditiveBlending
+            blending: three__WEBPACK_IMPORTED_MODULE_2__.AdditiveBlending,
         }));
         /** フレーム毎にカウントされる値です。 */
         this._counter = 0;
@@ -54065,7 +54065,7 @@ class Main {
         this._plane = new _Plane__WEBPACK_IMPORTED_MODULE_1__["default"]();
         this._scene.add(this._plane);
         // リサイズを監視
-        window.addEventListener('resize', event => {
+        window.addEventListener('resize', (event) => {
             this._onResize(event);
         });
         // ドライバーの名前を画面左下に表示

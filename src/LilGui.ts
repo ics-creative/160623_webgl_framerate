@@ -1,5 +1,5 @@
 import { EventDispatcher } from 'three';
-import GUI from "lil-gui";
+import GUI from 'lil-gui';
 
 /**
  * datGuiクラスです。

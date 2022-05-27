@@ -3,7 +3,7 @@ import {
   Sprite,
   SpriteMaterial,
   Texture,
-  Vector3
+  Vector3,
 } from 'three';
 import Util from './Util';
 import TimerModel from './TimerModel';
@@ -38,7 +38,7 @@ export default class Particle extends Sprite {
         color: color,
         map: texture,
         transparent: true,
-        blending: AdditiveBlending
+        blending: AdditiveBlending,
       })
     );
   }
