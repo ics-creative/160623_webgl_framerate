@@ -1,14 +1,16 @@
 {
   "compilerOptions": {
     "sourceMap": true,
-    // TSはECMAScript 6に変換
-    "target": "es6",
+    // 厳格化
+    "strict": true,
+    // TSはECMAScript ES2017に変換
+    "target": "ES2017",
     // TSのモジュールはES Modulesとして出力
-    "module": "es2015",
+    "module": "ES2015",
     "moduleResolution": "node",
     "lib": [
-      "es2018",
-      "dom"
+      "ES2021",
+      "DOM"
     ]
   }
 }

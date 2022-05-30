@@ -8,9 +8,9 @@ import TimerModel from './TimerModel';
 import { detectGpuDriver } from './DetectGpuDriver';
 
 declare class Stats {
-  dom: any;
-  begin();
-  end();
+  dom: HTMLElement;
+  begin(): void;
+  end(): void;
 }
 
 window.addEventListener('DOMContentLoaded', () => {
@@ -50,8 +50,6 @@ class Main {
 
   /** フレームカウント */
   private _frame: number = 0;
-  /** カメラの移動向き */
-  private _moveDirection: string;
 
   /**
    * コンストラクターです。
@@ -97,7 +95,10 @@ class Main {
     // ドライバーの名前を画面左下に表示
     const driver = detectGpuDriver();
 
-    document.querySelector('h1').innerHTML = `Your GPU Driver : ${driver}`;
+    const el = document.querySelector<HTMLElement>('h1');
+    if (el) {
+      el.textContent = `Your GPU Driver : ${driver}`;
+    }
 
     // 毎フレームの更新
     this._tick();

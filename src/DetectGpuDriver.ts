@@ -9,7 +9,11 @@ export function detectGpuDriver(): string {
   let gl;
   let renderer;
   try {
-    gl = canvas.getContext('experimental-webgl');
+    gl = canvas.getContext('webgl');
+
+    if (!gl) {
+      return '';
+    }
 
     //ドライバー情報を取得
     const ext = gl.getExtension('WEBGL_debug_renderer_info');

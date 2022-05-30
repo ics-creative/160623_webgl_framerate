@@ -8,7 +8,7 @@ import TimerModel from './TimerModel';
  */
 export default class ParticleEmitter extends Object3D {
   /** テクスチャ */
-  private _texture: Texture;
+  private _texture?: Texture;
   /** datGui */
   private _lilGui: LilGui;
   /** 生成するパーティクルの数です。 */
@@ -59,7 +59,8 @@ export default class ParticleEmitter extends Object3D {
 
     // 死んだパーティクルの数を把握する
     let notAliveNum = 0;
-    this.children.forEach((particle: Particle) => {
+    const items = this.children as Particle[];
+    items.forEach((particle) => {
       if (!particle.isAlive) {
         notAliveNum++;
       }
@@ -67,7 +68,7 @@ export default class ParticleEmitter extends Object3D {
 
     let initNum = 0;
     // パーティクルを数分更新
-    this.children.forEach((particle: Particle, index: number) => {
+    items.forEach((particle, index) => {
       if (particle.isAlive) {
         particle.update();
       } else {
@@ -98,8 +99,11 @@ export default class ParticleEmitter extends Object3D {
   /**
    * パーティクルを追加します。
    */
-  private _addParticle() {
+  private _addParticle(): void {
     if (this.children.length > this._lilGui.particleMaxNum) {
+      return;
+    }
+    if (!this._texture) {
       return;
     }
     const rand = Math.floor(Math.random() * 3);
