@@ -2,7 +2,7 @@ import { EventDispatcher } from 'three';
 import GUI from 'lil-gui';
 
 /**
- * datGuiクラスです。
+ * lilGuiクラスです。
  */
 export default class LilGui extends EventDispatcher {
   private static _instance: LilGui;
