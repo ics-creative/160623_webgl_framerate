@@ -2,7 +2,7 @@ import { Scene, WebGLRenderer } from 'three';
 import Camera from './Camera';
 import Plane from './Plane';
 import ParticleEmitter from './ParticleEmitter';
-import DatGui from './DatGui';
+import LilGui from './LilGui';
 import TimerModel from './TimerModel';
 
 import { detectGpuDriver } from './DetectGpuDriver';
@@ -19,7 +19,7 @@ window.addEventListener('DOMContentLoaded', () => {
 
 document.addEventListener(
   'touchmove',
-  function(e) {
+  function (e) {
     if (window.innerHeight >= document.body.scrollHeight) {
       e.preventDefault();
     }
@@ -32,11 +32,11 @@ document.addEventListener(
  */
 class Main {
   /** シーンオブジェクトです。 */
-  private _scene: Scene;
+  private readonly _scene: Scene;
   /** カメラオブジェクトです。 */
-  private _camera: Camera;
+  private readonly _camera: Camera;
   /** 地面オブジェクトです。 */
-  private _plane: Plane;
+  private readonly _plane: Plane;
   /** レンダラーオブジェクトです。 */
   private _renderer: WebGLRenderer;
   /** FPS表示 */
@@ -44,9 +44,9 @@ class Main {
   /** canvasを追加するDOM */
   private _renderDom: HTMLDivElement;
   /** パーティクルエミッター */
-  private _particleEmitter: ParticleEmitter;
-  /** datGui */
-  private _datGui: DatGui;
+  private readonly _particleEmitter: ParticleEmitter;
+  /** lilGui */
+  private _lilGui: LilGui;
 
   /** フレームカウント */
   private _frame: number = 0;
@@ -58,10 +58,10 @@ class Main {
    * @constructor
    */
   constructor() {
-    // datGui
-    this._datGui = DatGui.getInstance();
+    // lilGui
+    this._lilGui = LilGui.getInstance();
     this._onChangePixelRatio = this._onChangePixelRatio.bind(this);
-    this._datGui.addEventListener('changePixelRatio', this._onChangePixelRatio);
+    this._lilGui.addEventListener('changePixelRatio', this._onChangePixelRatio);
 
     // 左上に表示するようCSSを記述してbody直下に表示
     this._stats = new Stats();
@@ -77,7 +77,7 @@ class Main {
     this._renderDom = <HTMLDivElement>document.getElementById('renderCanvas');
     this._renderer = new WebGLRenderer({ antialias: true });
     this._renderer.setClearColor(0x000000);
-    this._renderer.setPixelRatio(this._datGui.pixelRatio);
+    this._renderer.setPixelRatio(this._lilGui.pixelRatio);
     this._resize();
     this._renderDom.appendChild(<HTMLElement>this._renderer.domElement);
 
@@ -90,7 +90,7 @@ class Main {
     this._scene.add(this._plane);
 
     // リサイズを監視
-    window.addEventListener('resize', event => {
+    window.addEventListener('resize', (event) => {
       this._onResize(event);
     });
 
@@ -125,7 +125,7 @@ class Main {
     TimerModel.getInstance().updateTimeRatio();
 
     // FPSを30に
-    if (this._datGui.fps30 && this._frame % 2) {
+    if (this._lilGui.fps30 && this._frame % 2) {
       return;
     }
 
@@ -160,7 +160,7 @@ class Main {
   /**
    * PixelRatio変更時のハンドラーです。
    */
-  private _onChangePixelRatio(event: Event) {
-    this._renderer.setPixelRatio(this._datGui.pixelRatio);
+  private _onChangePixelRatio() {
+    this._renderer.setPixelRatio(this._lilGui.pixelRatio);
   }
 }

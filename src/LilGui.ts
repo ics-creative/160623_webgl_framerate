@@ -1,21 +1,21 @@
-import * as dat from 'dat-gui';
 import { EventDispatcher } from 'three';
+import GUI from 'lil-gui';
 
 /**
- * datGuiクラスです。
+ * lilGuiクラスです。
  */
-export default class DatGui extends EventDispatcher {
-  private static _instance: DatGui;
+export default class LilGui extends EventDispatcher {
+  private static _instance: LilGui;
 
   /**
    * インスタンスを取得します。
    */
-  public static getInstance(): DatGui {
-    return DatGui._instance || new DatGui();
+  public static getInstance(): LilGui {
+    return LilGui._instance || new LilGui();
   }
 
   /** gui */
-  private _gui: dat.GUI;
+  private _gui: GUI;
 
   /** pixelRatio */
   public pixelRatio: number = window.devicePixelRatio;
@@ -39,7 +39,7 @@ export default class DatGui extends EventDispatcher {
   constructor() {
     super();
 
-    this._gui = new dat.GUI();
+    this._gui = new GUI();
 
     // pixelRatio
     const pixelRatioRow = this._gui.add(this, 'pixelRatio', 0.5, 3.0).step(0.5);
@@ -70,7 +70,7 @@ export default class DatGui extends EventDispatcher {
       this._onChangeTimeRatioMode();
     });
 
-    DatGui._instance = this;
+    LilGui._instance = this;
   }
 
   /**

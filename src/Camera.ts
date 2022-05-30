@@ -31,7 +31,7 @@ export default class Camera extends PerspectiveCamera {
    * 毎フレームの更新をかけます。
    */
   public update() {
-    let lad = (this._angle * Math.PI) / 180;
+    const lad = (this._angle * Math.PI) / 180;
     this.position.x = this._radius * Math.sin(lad);
     this.position.z = this._radius * Math.cos(lad);
     this.lookAt(new Vector3(0, 1.5, 0));

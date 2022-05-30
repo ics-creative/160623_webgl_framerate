@@ -1,4 +1,4 @@
-import DatGui from './DatGui';
+import LilGui from './LilGui';
 
 /**
  * タイマー周りのモデルクラスです。
@@ -31,7 +31,7 @@ export default class TimerModel {
    * 時間経過比率をアップデート
    */
   public updateTimeRatio(): void {
-    if (!DatGui.getInstance().timeRatioMode) {
+    if (!LilGui.getInstance().timeRatioMode) {
       this._timeRatio = 1;
       // 現在時間をセット
       this._time = new Date().getTime();
@@ -41,9 +41,9 @@ export default class TimerModel {
     const lastTime: number = this._time;
     if (lastTime > 0) {
       // 1フレーム当たりの時間(ミリ秒)
-      let FPS_60_SEC = 1000 / 60;
+      const FPS_60_SEC = 1000 / 60;
       // 差分時間をセット
-      let dTime = new Date().getTime() - lastTime;
+      const dTime = new Date().getTime() - lastTime;
       // FPS60との比較係数をセット
       this._timeRatio = dTime / FPS_60_SEC;
     } else {

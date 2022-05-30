@@ -7,17 +7,17 @@
     "format": "prettier --write 'src/**/*.ts' --single-quote"
   },
   "devDependencies": {
-    "lite-server": "^2.2.0",
-    "prettier": "^1.13.2",
-    "ts-loader": "^4.3.0",
-    "typescript": "^2.4.2",
-    "webpack": "^4.10.2",
-    "webpack-cli": "^2.1.4"
+    "lite-server": "^2.6.1",
+    "prettier": "^2.6.2",
+    "ts-loader": "^9.3.0",
+    "typescript": "^4.7.2",
+    "webpack": "^5.72.1",
+    "webpack-cli": "^4.9.2"
   },
   "dependencies": {
     "@types/dat-gui": "^0.6.3",
-    "@types/three": "^0.92.3",
-    "dat-gui": "^0.5.0",
-    "three": "^0.92.0"
+    "@types/three": "^0.140.0",
+    "lil-gui": "^0.16.1",
+    "three": "^0.140.2"
   }
 }

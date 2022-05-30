@@ -3,7 +3,7 @@ import {
   Sprite,
   SpriteMaterial,
   Texture,
-  Vector3
+  Vector3,
 } from 'three';
 import Util from './Util';
 import TimerModel from './TimerModel';
@@ -38,7 +38,7 @@ export default class Particle extends Sprite {
         color: color,
         map: texture,
         transparent: true,
-        blending: AdditiveBlending
+        blending: AdditiveBlending,
       })
     );
   }
@@ -47,10 +47,10 @@ export default class Particle extends Sprite {
    * ポジションを戻します。
    */
   public init(radius: number, angle: number) {
-    let rad = (angle * Math.PI) / 180;
-    let x = radius * Math.sin(rad);
-    let y = 4 * Math.sin(rad * 0.3);
-    let z = radius * Math.cos(rad);
+    const rad = (angle * Math.PI) / 180;
+    const x = radius * Math.sin(rad);
+    const y = 4 * Math.sin(rad * 0.3);
+    const z = radius * Math.cos(rad);
     this.position.set(x, y, z);
 
     this._maxScale = Math.random() * 1.5 + 0.5;

@@ -1,6 +1,6 @@
 import { Object3D, Texture, TextureLoader } from 'three';
 import Particle from './Particle';
-import DatGui from './DatGui';
+import LilGui from './LilGui';
 import TimerModel from './TimerModel';
 
 /**
@@ -10,7 +10,7 @@ export default class ParticleEmitter extends Object3D {
   /** テクスチャ */
   private _texture: Texture;
   /** datGui */
-  private _datGui: DatGui;
+  private _lilGui: LilGui;
   /** 生成するパーティクルの数です。 */
   private _particleNum: number;
   /** パーティクルを発生させる間隔です。 */
@@ -29,13 +29,13 @@ export default class ParticleEmitter extends Object3D {
   constructor() {
     super();
 
-    this._datGui = DatGui.getInstance();
+    this._lilGui = LilGui.getInstance();
 
-    this._datGui.addEventListener('changeParticleNum', (event: Event) =>
-      this._onChangeParticleNum(event)
+    this._lilGui.addEventListener('changeParticleNum', () =>
+      this._onChangeParticleNum()
     );
 
-    this._particleNum = this._datGui.particleNum;
+    this._particleNum = this._lilGui.particleNum;
 
     //テクスチャ読み込み
     const loader = new TextureLoader();
@@ -78,17 +78,17 @@ export default class ParticleEmitter extends Object3D {
         initNum++;
       }
 
-      let perLegnth = Math.floor(
-        this._datGui.particleMaxNum / this._particleNum
+      const perLength = Math.floor(
+        this._lilGui.particleMaxNum / this._particleNum
       );
-      if (index % perLegnth === 0) {
+      if (index % perLength === 0) {
         particle.visible = true;
       } else {
         particle.visible = false;
       }
     });
 
-    if (this.children.length < this._datGui.particleMaxNum) {
+    if (this.children.length < this._lilGui.particleMaxNum) {
       for (let i = 0; i < 10; i++) {
         this._addParticle();
       }
@@ -99,7 +99,7 @@ export default class ParticleEmitter extends Object3D {
    * パーティクルを追加します。
    */
   private _addParticle() {
-    if (this.children.length > this._datGui.particleMaxNum) {
+    if (this.children.length > this._lilGui.particleMaxNum) {
       return;
     }
     const rand = Math.floor(Math.random() * 3);
@@ -112,7 +112,7 @@ export default class ParticleEmitter extends Object3D {
   /**
    * パーティクル数変更時のハンドラーです。
    */
-  protected _onChangeParticleNum(event: Event): void {
-    this._particleNum = this._datGui.particleNum;
+  protected _onChangeParticleNum(): void {
+    this._particleNum = this._lilGui.particleNum;
   }
 }
