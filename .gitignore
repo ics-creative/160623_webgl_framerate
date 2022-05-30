@@ -5,3 +5,4 @@ npm_debug.log
 
 .idea
 /yarn.lock
+/public/bundle.js.map
