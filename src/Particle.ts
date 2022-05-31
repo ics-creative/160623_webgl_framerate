@@ -15,18 +15,18 @@ export default class Particle extends Sprite {
   /** フレーム毎にカウントされる値です。 */
   private _counter: number = 0;
   /** パーティクルの速度です。 */
-  private _velocity: Vector3;
+  private _velocity: Vector3 | null = null;
   /** 開始点 */
-  private _startPosition: Vector3;
+  private _startPosition: Vector3 | null = null;
 
   /** ライフポイント */
-  private _lifePoint: number;
+  private _lifePoint: number | null = null;
   /** 生きているかどうか */
   public isAlive: Boolean = false;
   /** カウントのインクリメント数 */
-  private _incrementCountNum: number;
+  private _incrementCountNum?: number;
   /** 最大スケール */
-  private _maxScale: number;
+  private _maxScale: number | null = null;
 
   /**
    * コンストラクターです。
@@ -72,6 +72,19 @@ export default class Particle extends Sprite {
    * フレーム毎に更新をかけます。
    */
   public update() {
+    if (this._incrementCountNum == null) {
+      return;
+    }
+    if (this._velocity == null) {
+      return;
+    }
+    if (this._maxScale == null) {
+      return;
+    }
+    if (this._lifePoint == null) {
+      return;
+    }
+
     const timeRatio = TimerModel.getInstance().getTimeRatio();
     this._counter += this._incrementCountNum * timeRatio;
     this.position.add(this._velocity.clone().multiplyScalar(timeRatio));
@@ -87,9 +100,8 @@ export default class Particle extends Sprite {
   }
 
   public dispose(): void {
-    this._counter = null;
+    this._counter = 0;
     this._startPosition = null;
     this._velocity = null;
-    this.material = null;
   }
 }

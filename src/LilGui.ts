@@ -24,7 +24,7 @@ export default class LilGui extends EventDispatcher {
   public particleNum = 500;
 
   /** パーティクルの最大数 */
-  public particleMaxNum = 4000;
+  public particleMaxNum = 8000;
 
   /** FPSを30にする */
   public fps30: boolean = false;
@@ -52,7 +52,9 @@ export default class LilGui extends EventDispatcher {
       this,
       'particleNum',
       100,
-      this.particleMaxNum
+      this.particleMaxNum,
+      // パーティクルの個数は整数とする
+      1
     );
     particleNumRow.onChange(() => {
       this._onChangeParticleNum();
