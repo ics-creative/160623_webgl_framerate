@@ -12,8 +12,8 @@
   },
   "dependencies": {
     "@types/dat-gui": "^0.6.3",
-    "@types/three": "^0.140.0",
-    "lil-gui": "^0.16.1",
-    "three": "^0.140.2"
+    "@types/three": "^0.182.0",
+    "lil-gui": "^0.21.0",
+    "three": "^0.182.0"
   }
 }
