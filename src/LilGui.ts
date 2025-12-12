@@ -15,7 +15,7 @@ class LilGui extends EventDispatcher {
   particleNum = 500;
 
   /** パーティクルの最大数 */
-  particleMaxNum = 8000;
+  particleMaxNum = 50_000;
 
   /** FPSを30にする */
   fps30 = false;
@@ -35,14 +35,7 @@ class LilGui extends EventDispatcher {
     });
 
     // パーティクルの数
-    const particleNumRow = this._gui.add(
-      this,
-      "particleNum",
-      100,
-      this.particleMaxNum,
-      // パーティクルの個数は整数とする
-      1,
-    );
+    const particleNumRow = this._gui.add(this, "particleNum", 1000, this.particleMaxNum, 100);
     particleNumRow.onChange(() => {
       this._onChangeParticleNum();
     });

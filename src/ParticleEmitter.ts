@@ -1,4 +1,4 @@
-import { Object3D, Texture, TextureLoader } from "three";
+import { Object3D, SRGBColorSpace, Texture, TextureLoader } from "three";
 import { Particle } from "./Particle";
 import { lilGui } from "./LilGui";
 import { getTimeRatio } from "./TimerModel";
@@ -8,7 +8,7 @@ import ImgParticle from "./assets/particle.png";
  */
 export class ParticleEmitter extends Object3D {
   /** テクスチャ */
-  private readonly _texture?: Texture;
+  private readonly _texture: Texture;
   /** 生成するパーティクルの数です。 */
   private _particleNum: number;
   /** 角度 */
@@ -31,6 +31,7 @@ export class ParticleEmitter extends Object3D {
     //テクスチャ読み込み
     const loader = new TextureLoader();
     this._texture = loader.load(ImgParticle);
+    this._texture.colorSpace = SRGBColorSpace;
   }
 
   /**
@@ -79,7 +80,7 @@ export class ParticleEmitter extends Object3D {
    * パーティクルを追加します。
    */
   private _addParticle() {
-    if (this.children.length > lilGui.particleMaxNum || !this._texture) {
+    if (this.children.length > lilGui.particleMaxNum) {
       return;
     }
     const rand = Math.floor(Math.random() * 3);
