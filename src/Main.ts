@@ -24,7 +24,7 @@ document.addEventListener(
       e.preventDefault();
     }
   },
-  false
+  false,
 );
 
 /**
@@ -39,8 +39,6 @@ class Main {
   private readonly _plane: Plane;
   /** レンダラーオブジェクトです。 */
   private _renderer: WebGLRenderer;
-  /** FPS表示 */
-  private _stats: Stats;
   /** canvasを追加するDOM */
   private _renderDom: HTMLDivElement;
   /** パーティクルエミッター */
@@ -53,17 +51,12 @@ class Main {
 
   /**
    * コンストラクターです。
-   * @constructor
    */
   constructor() {
     // lilGui
     this._lilGui = LilGui.getInstance();
     this._onChangePixelRatio = this._onChangePixelRatio.bind(this);
     this._lilGui.addEventListener('changePixelRatio', this._onChangePixelRatio);
-
-    // 左上に表示するようCSSを記述してbody直下に表示
-    this._stats = new Stats();
-    document.body.appendChild(this._stats.dom);
 
     // シーン
     this._scene = new Scene();
@@ -130,12 +123,8 @@ class Main {
       return;
     }
 
-    // Statsの計測を開始
-    this._stats.begin();
     // 描画
     this._renderer.render(this._scene, this._camera);
-    // Statsの計測終了
-    this._stats.end();
   }
 
   /**

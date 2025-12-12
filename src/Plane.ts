@@ -6,7 +6,6 @@ import { AxesHelper, GridHelper, Object3D } from 'three';
 export default class Plane extends Object3D {
   /**
    * コンストラクター
-   * @constructor
    */
   constructor() {
     super();

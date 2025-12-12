@@ -2,7 +2,7 @@ import { Object3D, Texture, TextureLoader } from 'three';
 import Particle from './Particle';
 import LilGui from './LilGui';
 import TimerModel from './TimerModel';
-
+import ImgParticle from './particle.png';
 /**
  * パーティクルエミッタークラスです。
  */
@@ -24,7 +24,6 @@ export default class ParticleEmitter extends Object3D {
 
   /**
    * コンストラクターです。
-   * @constructor
    */
   constructor() {
     super();
@@ -32,16 +31,14 @@ export default class ParticleEmitter extends Object3D {
     this._lilGui = LilGui.getInstance();
 
     this._lilGui.addEventListener('changeParticleNum', () =>
-      this._onChangeParticleNum()
+      this._onChangeParticleNum(),
     );
 
     this._particleNum = this._lilGui.particleNum;
 
     //テクスチャ読み込み
     const loader = new TextureLoader();
-    loader.load('./assets/texture/particle.png', (texture: Texture) => {
-      this._texture = texture;
-    });
+    this._texture = loader.load(ImgParticle);
   }
 
   /**
@@ -74,13 +71,13 @@ export default class ParticleEmitter extends Object3D {
       } else {
         particle.init(
           this._radius,
-          this._angle - (incrementNumber / notAliveNum) * initNum
+          this._angle - (incrementNumber / notAliveNum) * initNum,
         );
         initNum++;
       }
 
       const perLength = Math.floor(
-        this._lilGui.particleMaxNum / this._particleNum
+        this._lilGui.particleMaxNum / this._particleNum,
       );
       if (index % perLength === 0) {
         particle.visible = true;

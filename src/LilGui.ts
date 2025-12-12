@@ -34,7 +34,6 @@ export default class LilGui extends EventDispatcher {
 
   /**
    * コンストラクター
-   * @constructor
    */
   constructor() {
     super();
@@ -54,7 +53,7 @@ export default class LilGui extends EventDispatcher {
       100,
       this.particleMaxNum,
       // パーティクルの個数は整数とする
-      1
+      1,
     );
     particleNumRow.onChange(() => {
       this._onChangeParticleNum();

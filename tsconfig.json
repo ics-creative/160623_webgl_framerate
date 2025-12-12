@@ -3,14 +3,17 @@
     "sourceMap": true,
     // 厳格化
     "strict": true,
-    // TSはECMAScript ES2017に変換
-    "target": "ES2017",
+    // TSは最新のECMAScript仕様に変換
+    "target": "ESNext",
     // TSのモジュールはES Modulesとして出力
-    "module": "ES2015",
-    "moduleResolution": "node",
+    "module": "ESNext",
+    "moduleResolution": "bundler",
     "lib": [
       "ES2021",
       "DOM"
+    ],
+    "types": [
+      "vite/client"
     ]
   }
 }

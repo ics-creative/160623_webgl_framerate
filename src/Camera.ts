@@ -12,7 +12,6 @@ export default class Camera extends PerspectiveCamera {
 
   /**
    * コンストラクターです。
-   * @constructor
    */
   constructor() {
     super(45, window.innerWidth / window.innerHeight, 1, 1000);

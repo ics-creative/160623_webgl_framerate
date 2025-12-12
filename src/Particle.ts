@@ -30,7 +30,6 @@ export default class Particle extends Sprite {
 
   /**
    * コンストラクターです。
-   * @constructor
    */
   constructor(texture: Texture, color: number = 0x88ccff) {
     super(
@@ -39,7 +38,7 @@ export default class Particle extends Sprite {
         map: texture,
         transparent: true,
         blending: AdditiveBlending,
-      })
+      }),
     );
   }
 
@@ -58,7 +57,7 @@ export default class Particle extends Sprite {
     this._velocity = new Vector3(
       Util.random(-0.07, 0.07),
       Util.random(0.03, 0.08),
-      Util.random(-0.07, 0.07)
+      Util.random(-0.07, 0.07),
     );
     this.material.opacity = 1;
     this.isAlive = true;
