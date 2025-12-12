@@ -1,5 +1,5 @@
 import { PerspectiveCamera, Vector3 } from "three";
-import TimerModel from "./TimerModel";
+import { getTimeRatio } from "./TimerModel";
 
 /**
  * カメラのクラスです。
@@ -23,7 +23,7 @@ export default class Camera extends PerspectiveCamera {
    * 回転させます。
    */
   public rotate() {
-    this._angle -= 0.1 * TimerModel.getInstance().getTimeRatio();
+    this._angle -= 0.1 * getTimeRatio();
   }
 
   /**

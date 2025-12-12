@@ -1,5 +1,5 @@
 import { AdditiveBlending, MathUtils, Sprite, SpriteMaterial, Texture, Vector3 } from "three";
-import TimerModel from "./TimerModel";
+import { getTimeRatio } from "./TimerModel";
 
 /**
  * パーティクルのクラスです。
@@ -9,8 +9,6 @@ export default class Particle extends Sprite {
   private _counter: number = 0;
   /** パーティクルの速度です。 */
   private _velocity: Vector3 | null = null;
-  /** 開始点 */
-  private _startPosition: Vector3 | null = null;
 
   /** ライフポイント */
   private _lifePoint: number | null = null;
@@ -77,7 +75,7 @@ export default class Particle extends Sprite {
       return;
     }
 
-    const timeRatio = TimerModel.getInstance().getTimeRatio();
+    const timeRatio = getTimeRatio();
     this._counter += this._incrementCountNum * timeRatio;
     this.position.add(this._velocity.clone().multiplyScalar(timeRatio));
     this.material.opacity -= 0.009 * timeRatio;
@@ -89,11 +87,5 @@ export default class Particle extends Sprite {
     if (this._lifePoint < this._counter) {
       this.isAlive = false;
     }
-  }
-
-  public dispose(): void {
-    this._counter = 0;
-    this._startPosition = null;
-    this._velocity = null;
   }
 }

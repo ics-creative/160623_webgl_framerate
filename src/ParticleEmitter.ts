@@ -1,7 +1,7 @@
 import { Object3D, Texture, TextureLoader } from "three";
 import Particle from "./Particle";
 import LilGui from "./LilGui";
-import TimerModel from "./TimerModel";
+import { getTimeRatio } from "./TimerModel";
 import ImgParticle from "./particle.png";
 /**
  * パーティクルエミッタークラスです。
@@ -49,7 +49,7 @@ export default class ParticleEmitter extends Object3D {
     }
 
     // 角度をインクリメント
-    const incrementNumber = 7 * TimerModel.getInstance().getTimeRatio();
+    const incrementNumber = 7 * getTimeRatio();
     this._angle += incrementNumber;
 
     // 死んだパーティクルの数を把握する
