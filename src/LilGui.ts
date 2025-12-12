@@ -4,7 +4,14 @@ import GUI from "lil-gui";
 /**
  * lilGuiクラスです。
  */
-class LilGui extends EventDispatcher {
+interface LilGuiEventMap {
+  changePixelRatio: { type: "changePixelRatio" };
+  changeParticleNum: { type: "changeParticleNum" };
+  changeFps30: { type: "changeFps30" };
+  changeTimeRatioMode: { type: "changeTimeRatioMode" };
+}
+
+class LilGui extends EventDispatcher<LilGuiEventMap> {
   /** gui */
   private readonly _gui: GUI;
 
