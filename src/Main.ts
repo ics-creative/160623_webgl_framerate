@@ -116,7 +116,7 @@ function tick(): void {
 /**
  * リサイズ時のハンドラーです。
  */
-function onResize(event: Event): void {
+function onResize(): void {
   resize();
 }
 

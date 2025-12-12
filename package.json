@@ -1,8 +1,8 @@
 {
+  "private": true,
   "scripts": {
     "dev": "vite",
     "build": "vite build",
-    "preview": "vite preview",
     "format": "oxfmt"
   },
   "devDependencies": {
@@ -11,7 +11,6 @@
     "vite": "^7.2.7"
   },
   "dependencies": {
-    "@types/dat-gui": "^0.6.3",
     "@types/three": "^0.182.0",
     "lil-gui": "^0.21.0",
     "stats-gl": "^3.8.0",

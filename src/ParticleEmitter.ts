@@ -13,8 +13,6 @@ export default class ParticleEmitter extends Object3D {
   private _lilGui: LilGui;
   /** 生成するパーティクルの数です。 */
   private _particleNum: number;
-  /** パーティクルを発生させる間隔です。 */
-  private _interval: number = 15;
   /** 角度 */
   private _angle: number = 0;
   /** 半径 */

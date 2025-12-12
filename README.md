@@ -8,4 +8,3 @@
 - 依存関係: `npm install`
 - 開発サーバー: `npm run dev`
 - 本番ビルド: `npm run build`
-- ビルド確認: `npm run preview`
