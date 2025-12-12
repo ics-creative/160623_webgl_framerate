@@ -4,14 +4,9 @@ import Plane from './Plane';
 import ParticleEmitter from './ParticleEmitter';
 import LilGui from './LilGui';
 import TimerModel from './TimerModel';
+import Stats from 'stats-gl';
 
 import { detectGpuDriver } from './DetectGpuDriver';
-
-declare class Stats {
-  dom: HTMLElement;
-  begin(): void;
-  end(): void;
-}
 
 window.addEventListener('DOMContentLoaded', () => {
   new Main();
@@ -45,6 +40,8 @@ class Main {
   private readonly _particleEmitter: ParticleEmitter;
   /** lilGui */
   private _lilGui: LilGui;
+  /** FPS表示 */
+  private _stats: Stats;
 
   /** フレームカウント */
   private _frame: number = 0;
@@ -71,6 +68,24 @@ class Main {
     this._renderer.setPixelRatio(this._lilGui.pixelRatio);
     this._resize();
     this._renderDom.appendChild(<HTMLElement>this._renderer.domElement);
+
+    // Stats（FPS表示）- WebGL用のモダンなStats
+    this._stats = new Stats({
+      trackGPU: true,
+      trackHz: false,
+      trackCPT: false,
+      logsPerSecond: 4,
+      graphsPerSecond: 30,
+      samplesLog: 40,
+      samplesGraph: 10,
+      precision: 2,
+      horizontal: true,
+      minimal: false,
+      mode: 0,
+    });
+    document.body.appendChild(this._stats.dom);
+    // Three.jsレンダラーと統合
+    this._stats.init(this._renderer);
 
     // パーティクルエミッター
     this._particleEmitter = new ParticleEmitter();
@@ -123,8 +138,13 @@ class Main {
       return;
     }
 
+    // Statsの計測を開始
+    this._stats.begin();
     // 描画
     this._renderer.render(this._scene, this._camera);
+    // Statsの計測終了と更新
+    this._stats.end();
+    this._stats.update();
   }
 
   /**
