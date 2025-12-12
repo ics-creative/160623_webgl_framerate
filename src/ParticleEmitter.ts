@@ -1,6 +1,6 @@
 import { Object3D, Texture, TextureLoader } from "three";
 import { Particle } from "./Particle";
-import { LilGui } from "./LilGui";
+import { lilGui } from "./LilGui";
 import { getTimeRatio } from "./TimerModel";
 import ImgParticle from "./assets/particle.png";
 /**
@@ -9,8 +9,6 @@ import ImgParticle from "./assets/particle.png";
 export class ParticleEmitter extends Object3D {
   /** テクスチャ */
   private readonly _texture?: Texture;
-  /** datGui */
-  private _lilGui: LilGui;
   /** 生成するパーティクルの数です。 */
   private _particleNum: number;
   /** 角度 */
@@ -26,11 +24,9 @@ export class ParticleEmitter extends Object3D {
   constructor() {
     super();
 
-    this._lilGui = LilGui.getInstance();
+    lilGui.addEventListener("changeParticleNum", () => this._onChangeParticleNum());
 
-    this._lilGui.addEventListener("changeParticleNum", () => this._onChangeParticleNum());
-
-    this._particleNum = this._lilGui.particleNum;
+    this._particleNum = lilGui.particleNum;
 
     //テクスチャ読み込み
     const loader = new TextureLoader();
@@ -69,7 +65,7 @@ export class ParticleEmitter extends Object3D {
         initNum++;
       }
 
-      const perLength = Math.floor(this._lilGui.particleMaxNum / this._particleNum);
+      const perLength = Math.floor(lilGui.particleMaxNum / this._particleNum);
       if (index % perLength === 0) {
         particle.visible = true;
       } else {
@@ -77,7 +73,7 @@ export class ParticleEmitter extends Object3D {
       }
     });
 
-    if (this.children.length < this._lilGui.particleMaxNum) {
+    if (this.children.length < lilGui.particleMaxNum) {
       for (let i = 0; i < 10; i++) {
         this._addParticle();
       }
@@ -88,7 +84,7 @@ export class ParticleEmitter extends Object3D {
    * パーティクルを追加します。
    */
   private _addParticle(): void {
-    if (this.children.length > this._lilGui.particleMaxNum) {
+    if (this.children.length > lilGui.particleMaxNum) {
       return;
     }
     if (!this._texture) {
@@ -104,7 +100,7 @@ export class ParticleEmitter extends Object3D {
   /**
    * パーティクル数変更時のハンドラーです。
    */
-  protected _onChangeParticleNum(): void {
-    this._particleNum = this._lilGui.particleNum;
+  private _onChangeParticleNum(): void {
+    this._particleNum = lilGui.particleNum;
   }
 }

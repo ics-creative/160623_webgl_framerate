@@ -1,4 +1,4 @@
-import { LilGui } from "./LilGui";
+import { lilGui } from "./LilGui";
 
 /** 現在時刻 */
 let _time: number = 0;
@@ -17,7 +17,7 @@ export function getTimeRatio(): number {
  * 時間経過比率をアップデートします。
  */
 export function updateTimeRatio(): void {
-  if (!LilGui.getInstance().timeRatioMode) {
+  if (!lilGui.timeRatioMode) {
     _timeRatio = 1;
     // 現在時間をセット
     _time = new Date().getTime();

@@ -2,7 +2,7 @@ import { Scene, WebGLRenderer } from "three";
 import { Camera } from "./Camera";
 import { Plane } from "./Plane";
 import { ParticleEmitter } from "./ParticleEmitter";
-import { LilGui } from "./LilGui";
+import { lilGui } from "./LilGui";
 import { updateTimeRatio } from "./TimerModel";
 import Stats from "stats-gl";
 
@@ -29,7 +29,6 @@ await new Promise<void>((resolve) => {
 });
 
 // lilGui
-const lilGui = LilGui.getInstance();
 lilGui.addEventListener("changePixelRatio", onChangePixelRatio);
 
 // シーン

@@ -4,18 +4,9 @@ import GUI from "lil-gui";
 /**
  * lilGuiクラスです。
  */
-export class LilGui extends EventDispatcher {
-  private static _instance: LilGui;
-
-  /**
-   * インスタンスを取得します。
-   */
-  public static getInstance(): LilGui {
-    return LilGui._instance || new LilGui();
-  }
-
+class LilGui extends EventDispatcher {
   /** gui */
-  private _gui: GUI;
+  private readonly _gui: GUI;
 
   /** pixelRatio */
   public pixelRatio: number = window.devicePixelRatio;
@@ -62,19 +53,17 @@ export class LilGui extends EventDispatcher {
       this._onChangeFps30();
     });
 
-    // FPSを30に
+    // timeRatioMode
     const timeRatioRow = this._gui.add(this, "timeRatioMode");
     timeRatioRow.onChange(() => {
       this._onChangeTimeRatioMode();
     });
-
-    LilGui._instance = this;
   }
 
   /**
    * pixelRatioが変更された時のハンドラーです。
    */
-  protected _onChangePixelRatio(): void {
+  private _onChangePixelRatio(): void {
     // イベントを発火
     this.dispatchEvent({ type: "changePixelRatio" });
   }
@@ -82,7 +71,7 @@ export class LilGui extends EventDispatcher {
   /**
    * パーティクル数が変更された時のハンドラーです。
    */
-  protected _onChangeParticleNum(): void {
+  private _onChangeParticleNum(): void {
     // イベントを発火
     this.dispatchEvent({ type: "changeParticleNum" });
   }
@@ -90,16 +79,19 @@ export class LilGui extends EventDispatcher {
   /**
    * FPS30モードの切替え時のハンドラーです。
    */
-  protected _onChangeFps30(): void {
+  private _onChangeFps30(): void {
     // イベントを発火
     this.dispatchEvent({ type: "changeFps30" });
   }
 
   /**
-   * FPS30モードの切替え時のハンドラーです。
+   * timeRatioModeの切替え時のハンドラーです。
    */
-  protected _onChangeTimeRatioMode(): void {
+  private _onChangeTimeRatioMode(): void {
     // イベントを発火
     this.dispatchEvent({ type: "changeTimeRatioMode" });
   }
 }
+
+// モジュールスコープで1つのインスタンスを作成してエクスポート
+export const lilGui = new LilGui();
