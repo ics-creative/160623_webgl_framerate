@@ -8,13 +8,7 @@
     // TSのモジュールはES Modulesとして出力
     "module": "ESNext",
     "moduleResolution": "bundler",
-    "lib": [
-      "ES2021",
-      "DOM"
-    ],
-    "types": [
-      "vite/client"
-    ]
-  }
+    "lib": ["ES2021", "DOM"],
+    "types": ["vite/client"],
+  },
 }
-

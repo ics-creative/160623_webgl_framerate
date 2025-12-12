@@ -1,5 +1,5 @@
-import { EventDispatcher } from 'three';
-import GUI from 'lil-gui';
+import { EventDispatcher } from "three";
+import GUI from "lil-gui";
 
 /**
  * lilGuiクラスです。
@@ -41,7 +41,7 @@ export default class LilGui extends EventDispatcher {
     this._gui = new GUI();
 
     // pixelRatio
-    const pixelRatioRow = this._gui.add(this, 'pixelRatio', 0.5, 3.0).step(0.5);
+    const pixelRatioRow = this._gui.add(this, "pixelRatio", 0.5, 3.0).step(0.5);
     pixelRatioRow.onChange(() => {
       this._onChangePixelRatio();
     });
@@ -49,7 +49,7 @@ export default class LilGui extends EventDispatcher {
     // パーティクルの数
     const particleNumRow = this._gui.add(
       this,
-      'particleNum',
+      "particleNum",
       100,
       this.particleMaxNum,
       // パーティクルの個数は整数とする
@@ -60,13 +60,13 @@ export default class LilGui extends EventDispatcher {
     });
 
     // FPSを30に
-    const fps30Row = this._gui.add(this, 'fps30');
+    const fps30Row = this._gui.add(this, "fps30");
     fps30Row.onChange(() => {
       this._onChangeFps30();
     });
 
     // FPSを30に
-    const timeRatioRow = this._gui.add(this, 'timeRatioMode');
+    const timeRatioRow = this._gui.add(this, "timeRatioMode");
     timeRatioRow.onChange(() => {
       this._onChangeTimeRatioMode();
     });
@@ -79,7 +79,7 @@ export default class LilGui extends EventDispatcher {
    */
   protected _onChangePixelRatio(): void {
     // イベントを発火
-    this.dispatchEvent({ type: 'changePixelRatio' });
+    this.dispatchEvent({ type: "changePixelRatio" });
   }
 
   /**
@@ -87,7 +87,7 @@ export default class LilGui extends EventDispatcher {
    */
   protected _onChangeParticleNum(): void {
     // イベントを発火
-    this.dispatchEvent({ type: 'changeParticleNum' });
+    this.dispatchEvent({ type: "changeParticleNum" });
   }
 
   /**
@@ -95,7 +95,7 @@ export default class LilGui extends EventDispatcher {
    */
   protected _onChangeFps30(): void {
     // イベントを発火
-    this.dispatchEvent({ type: 'changeFps30' });
+    this.dispatchEvent({ type: "changeFps30" });
   }
 
   /**
@@ -103,6 +103,6 @@ export default class LilGui extends EventDispatcher {
    */
   protected _onChangeTimeRatioMode(): void {
     // イベントを発火
-    this.dispatchEvent({ type: 'changeTimeRatioMode' });
+    this.dispatchEvent({ type: "changeTimeRatioMode" });
   }
 }

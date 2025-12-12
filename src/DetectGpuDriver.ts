@@ -5,28 +5,28 @@
  * @since 2017-08-14
  */
 export function detectGpuDriver(): string {
-  const canvas = document.createElement('canvas');
+  const canvas = document.createElement("canvas");
   let gl;
   let renderer;
   try {
-    gl = canvas.getContext('webgl');
+    gl = canvas.getContext("webgl");
 
     if (!gl) {
-      return '';
+      return "";
     }
 
     //ドライバー情報を取得
-    const ext = gl.getExtension('WEBGL_debug_renderer_info');
+    const ext = gl.getExtension("WEBGL_debug_renderer_info");
 
     if (!ext) {
-      renderer = '';
+      renderer = "";
     } else {
       renderer = gl.getParameter(ext.UNMASKED_RENDERER_WEBGL);
     }
   } catch (e) {
     // WebGL未対応の場合
     gl = null;
-    renderer = '';
+    renderer = "";
   }
 
   // ドライバの種類を出力

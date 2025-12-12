@@ -1,12 +1,6 @@
-import {
-  AdditiveBlending,
-  Sprite,
-  SpriteMaterial,
-  Texture,
-  Vector3,
-} from 'three';
-import Util from './Util';
-import TimerModel from './TimerModel';
+import { AdditiveBlending, Sprite, SpriteMaterial, Texture, Vector3 } from "three";
+import Util from "./Util";
+import TimerModel from "./TimerModel";
 
 /**
  * パーティクルのクラスです。

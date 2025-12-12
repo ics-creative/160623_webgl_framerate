@@ -1,4 +1,4 @@
-import LilGui from './LilGui';
+import LilGui from "./LilGui";
 
 /**
  * タイマー周りのモデルクラスです。

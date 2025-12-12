@@ -1,8 +1,8 @@
-import { Object3D, Texture, TextureLoader } from 'three';
-import Particle from './Particle';
-import LilGui from './LilGui';
-import TimerModel from './TimerModel';
-import ImgParticle from './particle.png';
+import { Object3D, Texture, TextureLoader } from "three";
+import Particle from "./Particle";
+import LilGui from "./LilGui";
+import TimerModel from "./TimerModel";
+import ImgParticle from "./particle.png";
 /**
  * パーティクルエミッタークラスです。
  */
@@ -30,9 +30,7 @@ export default class ParticleEmitter extends Object3D {
 
     this._lilGui = LilGui.getInstance();
 
-    this._lilGui.addEventListener('changeParticleNum', () =>
-      this._onChangeParticleNum(),
-    );
+    this._lilGui.addEventListener("changeParticleNum", () => this._onChangeParticleNum());
 
     this._particleNum = this._lilGui.particleNum;
 
@@ -69,16 +67,11 @@ export default class ParticleEmitter extends Object3D {
       if (particle.isAlive) {
         particle.update();
       } else {
-        particle.init(
-          this._radius,
-          this._angle - (incrementNumber / notAliveNum) * initNum,
-        );
+        particle.init(this._radius, this._angle - (incrementNumber / notAliveNum) * initNum);
         initNum++;
       }
 
-      const perLength = Math.floor(
-        this._lilGui.particleMaxNum / this._particleNum,
-      );
+      const perLength = Math.floor(this._lilGui.particleMaxNum / this._particleNum);
       if (index % perLength === 0) {
         particle.visible = true;
       } else {

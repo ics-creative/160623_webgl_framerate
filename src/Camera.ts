@@ -1,5 +1,5 @@
-import { PerspectiveCamera, Vector3 } from 'three';
-import TimerModel from './TimerModel';
+import { PerspectiveCamera, Vector3 } from "three";
+import TimerModel from "./TimerModel";
 
 /**
  * カメラのクラスです。

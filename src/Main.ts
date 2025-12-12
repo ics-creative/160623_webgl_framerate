@@ -1,19 +1,19 @@
-import { Scene, WebGLRenderer } from 'three';
-import Camera from './Camera';
-import Plane from './Plane';
-import ParticleEmitter from './ParticleEmitter';
-import LilGui from './LilGui';
-import TimerModel from './TimerModel';
-import Stats from 'stats-gl';
+import { Scene, WebGLRenderer } from "three";
+import Camera from "./Camera";
+import Plane from "./Plane";
+import ParticleEmitter from "./ParticleEmitter";
+import LilGui from "./LilGui";
+import TimerModel from "./TimerModel";
+import Stats from "stats-gl";
 
-import { detectGpuDriver } from './DetectGpuDriver';
+import { detectGpuDriver } from "./DetectGpuDriver";
 
-window.addEventListener('DOMContentLoaded', () => {
+window.addEventListener("DOMContentLoaded", () => {
   new Main();
 });
 
 document.addEventListener(
-  'touchmove',
+  "touchmove",
   function (e) {
     if (window.innerHeight >= document.body.scrollHeight) {
       e.preventDefault();
@@ -53,7 +53,7 @@ class Main {
     // lilGui
     this._lilGui = LilGui.getInstance();
     this._onChangePixelRatio = this._onChangePixelRatio.bind(this);
-    this._lilGui.addEventListener('changePixelRatio', this._onChangePixelRatio);
+    this._lilGui.addEventListener("changePixelRatio", this._onChangePixelRatio);
 
     // シーン
     this._scene = new Scene();
@@ -62,7 +62,7 @@ class Main {
     this._camera = new Camera();
 
     // レンダラー
-    this._renderDom = <HTMLDivElement>document.getElementById('renderCanvas');
+    this._renderDom = <HTMLDivElement>document.getElementById("renderCanvas");
     this._renderer = new WebGLRenderer({ antialias: true });
     this._renderer.setClearColor(0x000000);
     this._renderer.setPixelRatio(this._lilGui.pixelRatio);
@@ -96,14 +96,14 @@ class Main {
     this._scene.add(this._plane);
 
     // リサイズを監視
-    window.addEventListener('resize', (event) => {
+    window.addEventListener("resize", (event) => {
       this._onResize(event);
     });
 
     // ドライバーの名前を画面左下に表示
     const driver = detectGpuDriver();
 
-    const el = document.querySelector<HTMLElement>('h1');
+    const el = document.querySelector<HTMLElement>("h1");
     if (el) {
       el.textContent = `Your GPU Driver : ${driver}`;
     }
@@ -160,8 +160,8 @@ class Main {
   private _resize() {
     const width = this._renderDom.clientWidth;
     const height = this._renderDom.clientHeight;
-    this._renderer.domElement.setAttribute('width', String(width));
-    this._renderer.domElement.setAttribute('height', String(height));
+    this._renderer.domElement.setAttribute("width", String(width));
+    this._renderer.domElement.setAttribute("height", String(height));
     this._renderer.setSize(width, height);
     this._camera.aspect = width / height;
     this._camera.updateProjectionMatrix();
