@@ -4,7 +4,7 @@ import { getTimeRatio } from "./TimerModel";
 /**
  * パーティクルのクラスです。
  */
-export default class Particle extends Sprite {
+export class Particle extends Sprite {
   /** フレーム毎にカウントされる値です。 */
   private _counter: number = 0;
   /** パーティクルの速度です。 */

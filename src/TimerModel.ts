@@ -1,4 +1,4 @@
-import LilGui from "./LilGui";
+import { LilGui } from "./LilGui";
 
 /** 現在時刻 */
 let _time: number = 0;

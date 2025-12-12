@@ -1,14 +1,14 @@
 import { Object3D, Texture, TextureLoader } from "three";
-import Particle from "./Particle";
-import LilGui from "./LilGui";
+import { Particle } from "./Particle";
+import { LilGui } from "./LilGui";
 import { getTimeRatio } from "./TimerModel";
-import ImgParticle from "./particle.png";
+import ImgParticle from "./assets/particle.png";
 /**
  * パーティクルエミッタークラスです。
  */
-export default class ParticleEmitter extends Object3D {
+export class ParticleEmitter extends Object3D {
   /** テクスチャ */
-  private _texture?: Texture;
+  private readonly _texture?: Texture;
   /** datGui */
   private _lilGui: LilGui;
   /** 生成するパーティクルの数です。 */

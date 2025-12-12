@@ -3,10 +3,7 @@ import { AxesHelper, GridHelper, Object3D } from "three";
 /**
  * 地面クラス
  */
-export default class Plane extends Object3D {
-  /**
-   * コンストラクター
-   */
+export class Plane extends Object3D {
   constructor() {
     super();
 

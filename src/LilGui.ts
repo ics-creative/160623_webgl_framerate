@@ -4,7 +4,7 @@ import GUI from "lil-gui";
 /**
  * lilGuiクラスです。
  */
-export default class LilGui extends EventDispatcher {
+export class LilGui extends EventDispatcher {
   private static _instance: LilGui;
 
   /**
@@ -32,9 +32,6 @@ export default class LilGui extends EventDispatcher {
   /** timeRatioの有無 */
   public timeRatioMode: boolean = false;
 
-  /**
-   * コンストラクター
-   */
   constructor() {
     super();
 

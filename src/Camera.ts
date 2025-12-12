@@ -4,7 +4,7 @@ import { getTimeRatio } from "./TimerModel";
 /**
  * カメラのクラスです。
  */
-export default class Camera extends PerspectiveCamera {
+export class Camera extends PerspectiveCamera {
   /** アニメーションに用いる角度の値です。 */
   private _angle: number = 0;
   /** アニメーションの円軌道の半径です。 */
