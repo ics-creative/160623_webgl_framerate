@@ -6,6 +6,7 @@
     "format": "oxfmt"
   },
   "devDependencies": {
+    "@types/node": "^25.0.1",
     "oxfmt": "^0.17.0",
     "typescript": "^5.9.3",
     "vite": "^7.2.7"
