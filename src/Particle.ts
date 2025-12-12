@@ -6,14 +6,14 @@ import { getTimeRatio } from "./TimerModel";
  */
 export class Particle extends Sprite {
   /** フレーム毎にカウントされる値です。 */
-  private _counter: number = 0;
+  private _counter = 0;
   /** パーティクルの速度です。 */
   private _velocity: Vector3 | null = null;
 
   /** ライフポイント */
   private _lifePoint: number | null = null;
   /** 生きているかどうか */
-  public isAlive: Boolean = false;
+  isAlive = false;
   /** カウントのインクリメント数 */
   private _incrementCountNum?: number;
   /** 最大スケール */
@@ -36,7 +36,7 @@ export class Particle extends Sprite {
   /**
    * ポジションを戻します。
    */
-  public init(radius: number, angle: number) {
+  init(radius: number, angle: number) {
     const rad = (angle * Math.PI) / 180;
     const x = radius * Math.sin(rad);
     const y = 4 * Math.sin(rad * 0.3);
@@ -61,17 +61,13 @@ export class Particle extends Sprite {
   /**
    * フレーム毎に更新をかけます。
    */
-  public update() {
-    if (this._incrementCountNum == null) {
-      return;
-    }
-    if (this._velocity == null) {
-      return;
-    }
-    if (this._maxScale == null) {
-      return;
-    }
-    if (this._lifePoint == null) {
+  update() {
+    if (
+      this._incrementCountNum == null ||
+      this._velocity == null ||
+      this._maxScale == null ||
+      this._lifePoint == null
+    ) {
       return;
     }
 

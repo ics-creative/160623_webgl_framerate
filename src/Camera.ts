@@ -6,9 +6,9 @@ import { getTimeRatio } from "./TimerModel";
  */
 export class Camera extends PerspectiveCamera {
   /** アニメーションに用いる角度の値です。 */
-  private _angle: number = 0;
+  private _angle = 0;
   /** アニメーションの円軌道の半径です。 */
-  private _radius: number = 25;
+  private _radius = 25;
 
   /**
    * コンストラクターです。
@@ -22,14 +22,14 @@ export class Camera extends PerspectiveCamera {
   /**
    * 回転させます。
    */
-  public rotate() {
+  rotate() {
     this._angle -= 0.1 * getTimeRatio();
   }
 
   /**
    * 毎フレームの更新をかけます。
    */
-  public update() {
+  update() {
     const lad = (this._angle * Math.PI) / 180;
     this.position.x = this._radius * Math.sin(lad);
     this.position.z = this._radius * Math.cos(lad);

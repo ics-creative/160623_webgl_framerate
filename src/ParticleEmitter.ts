@@ -12,11 +12,11 @@ export class ParticleEmitter extends Object3D {
   /** 生成するパーティクルの数です。 */
   private _particleNum: number;
   /** 角度 */
-  private _angle: number = 0;
+  private _angle = 0;
   /** 半径 */
-  private _radius: number = 5;
+  private _radius = 5;
   /** カラー配列 */
-  private _colorList: number[] = [0x88ccff, 0xffffdd, 0x44eeff];
+  private _colorList = [0x88ccff, 0xffffdd, 0x44eeff];
 
   /**
    * コンストラクターです。
@@ -36,7 +36,7 @@ export class ParticleEmitter extends Object3D {
   /**
    * フレーム毎に更新をかけます。
    */
-  public update() {
+  update() {
     // テクスチャが用意できていなければ処理しない
     if (!this._texture) {
       return;
@@ -47,17 +47,12 @@ export class ParticleEmitter extends Object3D {
     this._angle += incrementNumber;
 
     // 死んだパーティクルの数を把握する
-    let notAliveNum = 0;
     const items = this.children as Particle[];
-    items.forEach((particle) => {
-      if (!particle.isAlive) {
-        notAliveNum++;
-      }
-    });
+    const notAliveNum = items.filter((particle) => !particle.isAlive).length;
 
     let initNum = 0;
     // パーティクルを数分更新
-    items.forEach((particle, index) => {
+    for (const [index, particle] of items.entries()) {
       if (particle.isAlive) {
         particle.update();
       } else {
@@ -71,7 +66,7 @@ export class ParticleEmitter extends Object3D {
       } else {
         particle.visible = false;
       }
-    });
+    }
 
     if (this.children.length < lilGui.particleMaxNum) {
       for (let i = 0; i < 10; i++) {
@@ -83,11 +78,8 @@ export class ParticleEmitter extends Object3D {
   /**
    * パーティクルを追加します。
    */
-  private _addParticle(): void {
-    if (this.children.length > lilGui.particleMaxNum) {
-      return;
-    }
-    if (!this._texture) {
+  private _addParticle() {
+    if (this.children.length > lilGui.particleMaxNum || !this._texture) {
       return;
     }
     const rand = Math.floor(Math.random() * 3);
@@ -100,7 +92,7 @@ export class ParticleEmitter extends Object3D {
   /**
    * パーティクル数変更時のハンドラーです。
    */
-  private _onChangeParticleNum(): void {
+  private _onChangeParticleNum() {
     this._particleNum = lilGui.particleNum;
   }
 }

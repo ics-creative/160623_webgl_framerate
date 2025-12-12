@@ -9,19 +9,19 @@ class LilGui extends EventDispatcher {
   private readonly _gui: GUI;
 
   /** pixelRatio */
-  public pixelRatio: number = window.devicePixelRatio;
+  pixelRatio: number = window.devicePixelRatio;
 
   /** パーティクルの数 */
-  public particleNum = 500;
+  particleNum = 500;
 
   /** パーティクルの最大数 */
-  public particleMaxNum = 8000;
+  particleMaxNum = 8000;
 
   /** FPSを30にする */
-  public fps30: boolean = false;
+  fps30 = false;
 
   /** timeRatioの有無 */
-  public timeRatioMode: boolean = false;
+  timeRatioMode = false;
 
   constructor() {
     super();
@@ -63,7 +63,7 @@ class LilGui extends EventDispatcher {
   /**
    * pixelRatioが変更された時のハンドラーです。
    */
-  private _onChangePixelRatio(): void {
+  private _onChangePixelRatio() {
     // イベントを発火
     this.dispatchEvent({ type: "changePixelRatio" });
   }
@@ -71,7 +71,7 @@ class LilGui extends EventDispatcher {
   /**
    * パーティクル数が変更された時のハンドラーです。
    */
-  private _onChangeParticleNum(): void {
+  private _onChangeParticleNum() {
     // イベントを発火
     this.dispatchEvent({ type: "changeParticleNum" });
   }
@@ -79,7 +79,7 @@ class LilGui extends EventDispatcher {
   /**
    * FPS30モードの切替え時のハンドラーです。
    */
-  private _onChangeFps30(): void {
+  private _onChangeFps30() {
     // イベントを発火
     this.dispatchEvent({ type: "changeFps30" });
   }
@@ -87,7 +87,7 @@ class LilGui extends EventDispatcher {
   /**
    * timeRatioModeの切替え時のハンドラーです。
    */
-  private _onChangeTimeRatioMode(): void {
+  private _onChangeTimeRatioMode() {
     // イベントを発火
     this.dispatchEvent({ type: "changeTimeRatioMode" });
   }

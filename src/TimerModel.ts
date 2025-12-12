@@ -1,10 +1,10 @@
 import { lilGui } from "./LilGui";
 
 /** 現在時刻 */
-let _time: number = 0;
+let _time = 0;
 
 /** 時間経過比率 */
-let _timeRatio: number = 1;
+let _timeRatio = 1;
 
 /**
  * 時間経過比率を取得します。
@@ -19,17 +19,16 @@ export function getTimeRatio(): number {
 export function updateTimeRatio(): void {
   if (!lilGui.timeRatioMode) {
     _timeRatio = 1;
-    // 現在時間をセット
-    _time = new Date().getTime();
+    _time = Date.now();
     return;
   }
 
-  const lastTime: number = _time;
+  const lastTime = _time;
   if (lastTime > 0) {
     // 1フレーム当たりの時間(ミリ秒)
     const FPS_60_SEC = 1000 / 60;
     // 差分時間をセット
-    const dTime = new Date().getTime() - lastTime;
+    const dTime = Date.now() - lastTime;
     // FPS60との比較係数をセット
     _timeRatio = dTime / FPS_60_SEC;
   } else {
@@ -38,5 +37,5 @@ export function updateTimeRatio(): void {
   }
 
   // 現在時間をセット
-  _time = new Date().getTime();
+  _time = Date.now();
 }
