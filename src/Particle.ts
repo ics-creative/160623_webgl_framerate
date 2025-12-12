@@ -1,5 +1,4 @@
-import { AdditiveBlending, Sprite, SpriteMaterial, Texture, Vector3 } from "three";
-import Util from "./Util";
+import { AdditiveBlending, MathUtils, Sprite, SpriteMaterial, Texture, Vector3 } from "three";
 import TimerModel from "./TimerModel";
 
 /**
@@ -49,9 +48,9 @@ export default class Particle extends Sprite {
     this._maxScale = Math.random() * 1.5 + 0.5;
     this.scale.set(0, 0, 0);
     this._velocity = new Vector3(
-      Util.random(-0.07, 0.07),
-      Util.random(0.03, 0.08),
-      Util.random(-0.07, 0.07),
+      MathUtils.randFloat(-0.07, 0.07),
+      MathUtils.randFloat(0.03, 0.08),
+      MathUtils.randFloat(-0.07, 0.07),
     );
     this.material.opacity = 1;
     this.isAlive = true;
